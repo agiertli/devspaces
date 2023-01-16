@@ -60,11 +60,14 @@ alter these two attributes as well:
 ** `namespace: userN-dev`
 ** `name: custom-jms-amqp-10-sink`
 * Apply the custom kamelet in your namespace, i.e. 
+
+[.lines_space]
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
 oc apply -f custom-sink-kamelet.yaml
 ----
+
 * Test your kamelet by changing `ArtemisIntegration.java` to connect to
 the Artemis Broker running on OCP
 ** You can find out the Broker service url like this:
@@ -77,6 +80,8 @@ endpoint parameters:
 *** `password: password1!`
 * Run the integration - notice, we are now running the integration on a
 cluster (hence kamel cli) :
+
+[.lines_space]
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
@@ -85,10 +90,12 @@ kamel run ArtemisIntegration.java
 
 * If everything went well, you should similar output in the logs in the
 started pod in your namespace:
-+
-....
+
+[.console-output]
+[source,bash,subs="+macros,+attributes"]
+----
 2022-12-01 21:29:52,693 INFO  [org.apa.qpi.jms.JmsConnection] (AmqpProvider :(1556):[amqp://rhte-artemis-no-ssl-0-svc.tooling.svc.cluster.local:5672]) Connection ID:ef32e5da-b4a2-4172-bae8-50b0c03b216a:1556 connected to server: amqp://rhte-artemis-no-ssl-0-svc.tooling.svc.cluster.local:5672   
-....
+----
 
 *2. Add one-way ssl*
 
@@ -146,13 +153,12 @@ cd ssl
 oc create secret generic my-artemis-secret --from-file=client.ts
 ----
 * `kamel` binary allows us to reference a secret and mount it to a
-specified location - mount it somewhere under `/etc`
-+
-....
---resource secret:secretName@/where/you/want/to/mount/it
+specified location - mount it somewhere under `/etc`, i.e.:
+
+`--resource secret:secretName@/where/you/want/to/mount/it`
 
 See [documentation](https://camel.apache.org/camel-k/1.10.x/configuration/runtime-resources.html) for more details.
-....
+
 
 Update your `ArtemisIntegration.java`: - URI scheme is now `amqps` (as
 opposed amqp) - Get the new _ssl_ service name from `tooling` namespace
