@@ -7,6 +7,7 @@ image::argo-overview.png[High level argo overview]
 
 Most of the operators and utilities are installed in the `tooling` namespace to which every user has read access.  Here comes the list of all the useful information you need to know:
 
+- OpenShift Console URL: <TODO>
  - OpenShift username/password: `user` / `password`
  - AMQ 7 username/password: `admin` / `password1!`
  - AMQ 7 client truststore password: `password1!`
