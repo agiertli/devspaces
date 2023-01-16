@@ -50,9 +50,11 @@ camel run ArtemisIntegration.java
 * You should see similar output in the console log
 
 
-....
+[.console-output]
+[source,bash,subs="+macros,+attributes"]
+----
 2022-11-29 20:37:28.693  INFO 72000 --- [ - timer://java] ArtemisIntegration.java:14               : Hello Camel from java
-....
+----
 
 Throughout this lab, we will be developing a very *simple integration
 which will talk to an Artemis broker*.
