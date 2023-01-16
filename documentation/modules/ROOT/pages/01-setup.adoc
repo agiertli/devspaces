@@ -1,16 +1,22 @@
 = Lab Environment
 include::_attributes.adoc[]
 
-The lab setup is backed by ArgoCD - there is single parent app in the `tooling` namespace which deploys following services:
+The lab setup is backed by ArgoCD, below is high level overview of how it's setup.
 
- - AMQ 7
- - camelk
- - gitea
- - nexus
- - sealed secrets
+image::argo-overview.png[High level argo overview]
 
-You, as a user, have _view_ access to `tooling` namespace, which allows you to get all the information - such as connection URLs for AMQ, camel-k operator logs for troubleshooting, etc.
+Most of the operators and utilities are installed in the `tooling` namespace to which every user has read access.  Here comes the list of all the useful information you need to know:
 
-Final Argo Application, called `namespaces` configures user namespaces and permission. Each user (or team) have following namespaces created with admin permissions:
- - userN-dev
- - userN-prod
+ - OpenShift username/password: `user` / `password`
+ - AMQ 7 username/password: `admin` / `password1!`
+ - AMQ 7 client truststore password: `password1!`
+ - AMQ 7 non-ssl connection url: `amqp://rhte-artemis-no-ssl-0-svc.tooling.svc.cluster.local:5672`
+ - AMQ 7 ssl connection url:  `amqps://rhte-artemis-one-way-ssl-0-svc.tooling.svc.cluster.local:5673`
+ - Dev Spaces URL: `oc get route <TODO> -n tooling`
+ - Gitea URL: `oc get route <TODO> -n tooling`
+ - ArgoCD url: `oc get route <TODO> -n openshift-gitops`
+
+
+
+
+
