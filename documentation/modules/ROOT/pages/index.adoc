@@ -3,9 +3,12 @@
 :!sectids:
 
 [.text-center.strong]
-== Publish Services to Kubernetes
+== Lab intro
 
 Welcome to Cloud Native Integration with camel-k lab. We are excited to have you. The focus of this lab is to share field experience from real, production, camel-k deployment. We will not be focusing on the creation of the complex camel integration. Instead, we will be focusing on everything else - building, deploying, testing, troubleshooting and customizing. The aim is to cover a full lifecycle of developing a camel-k application. From the initial bootstrapping all the way to production deployment. Let's get down to it, and most importantly, let's have some fun.
+
+== Lab Goals
+The primary goal of this lab is to enable Red Hat consultants and architects to deliver camel-k projects for our customers beyond the demo scope. We want our attendees to understand all the parts of the camel-k development lifecycle. Including initial local development, dev deployment, troubleshooting, extending the out of the box bits, production deployment. The primary difference between demo and a the real engagement is the environment and its constraints - such as authentication, security, internet access, immutability, supportability, etc.. The lessons learned in this lab are based on real engagement at large UK customer (Motability) which went successfully live.
 
 [.tiles.browse]
 == Browse modules
