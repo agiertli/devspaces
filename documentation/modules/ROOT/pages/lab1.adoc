@@ -7,11 +7,13 @@ camel, quarkus and targets Cloud (kubernetes, OpenShift) as its target
 runtime. - comes with `kamel` cli tool which enables developer to deploy
 integration onto cloud. By default, `kamel` requires cloud access.
 
-*But what if you are in early stages of development and you just want to
-test your integration locally?*
+[quote]
+But what if you are in early stages of development and you just want to
+test your integration locally?
 
-*What if the components you want to integrate with, are not yet
-available in the cloud platform?*
+[quote]
+What if the components you want to integrate with, are not yet
+available in the cloud platform?
 
 There are two options how to start developing camel-k integration
 locally without depending on cloud access:
@@ -32,13 +34,21 @@ development experience looks like:*
 https://camel.apache.org/manual/camel-jbang.html
 * Create a `ArtemisIntegration.java` camel Route using `camel` cli and
 run it
-+
-....
-$ camel init ArtemisIntegration.java
-$ camel run ArtemisIntegration.java
-....
+
+
+[,console]
+----
+camel init ArtemisIntegration.java
+----
+
+[,console]
+----
+camel run ArtemisIntegration.java
+----
+
 * You should see similar output in the console log
-+
+
+
 ....
 2022-11-29 20:37:28.693  INFO 72000 --- [ - timer://java] ArtemisIntegration.java:14               : Hello Camel from java
 ....
