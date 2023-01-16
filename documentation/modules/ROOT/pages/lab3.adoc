@@ -85,7 +85,7 @@ to assist with this task.*
 * Explore `charts/templates` - that’s where all the magic happens. We
 are defining a few custom Kamelets, but most importantly we are
 templating the creation of Kamelet Bindings.
-** Understand how _binary_ (vs ``normal'') secrets are handled.
+** Understand how _binary_ (vs _normal_) secrets are handled.
 ** We are also using
 https://camel.apache.org/camel-k/1.8.x/traits/traits.html[traits] which
 is a camel-k feature which allows us to enable additional super powers
@@ -93,9 +93,8 @@ on top of our integrations. Usage of the `Container` trait is almost
 inevitable in OCP environment.
 ** If you study `kamelet-bindings.yaml` you will notice it is completely
 generic and supports _any_ two Kamelets and _any_ properties.
-+
-+
-This is a very powerful concept as you can use this as a base template
+
+*** This is a very powerful concept as you can use this as a base template
 to define integrations for many different systems. However, if this was
 a real-world scenario, this helm chart wouldn’t be so useful without the
 accompanying documentation. The only way how to make the consumption of

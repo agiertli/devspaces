@@ -53,7 +53,7 @@ https://github.com/apache/qpid-jms/blob/main/qpid-jms-client/src/main/java/org/a
 constructor] and see whether there is a constructor suitable for our
 purposes. Consider adding new `username` and `password` kamelet
 properties and also new ConnectionFactory constructor parameters
-* camel-k will cleverly ``guess'' which ConnectionFactory constructor to
+* camel-k will cleverly guess which ConnectionFactory constructor to
 call based on the number and types of the parameters. `Order matters(!)`
 * After applying the changes to the kamelet yaml file, make sure to
 alter these two attributes as well:

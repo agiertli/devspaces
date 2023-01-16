@@ -26,15 +26,20 @@ going to explore in Lab 4.
 We’ll start by inspecting the immutability principles which are by
 default violated when using `kamel run`.
 
-* Delete IntegrationKit from `userN-dev` and `userN-prod`. ``` $ kamel
-reset –namespace (deletes everything)
-+
+* Delete IntegrationKit from `userN-dev` and `userN-prod`. 
+
+[.lines_space]
+[source,bash, subs="+macros,+attributes"]
+----
+kamel reset –namespace (deletes everything)
 or
-+
-$ oc delete ik ```
+oc delete ik 
+----
+
 * Start the example Integration which is provided in the lab directory
 in dev namespace:
-+
+
+
 [.lines_space]
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
@@ -43,9 +48,9 @@ cd lab4
 kamel run MutableIntegration.java --namespace userN-dev
 ----
 
-
 * Find out what IntegrationKit is your integration using and note down
-the name of the container image 
+the name of the container image :
+
 [.lines_space]
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
@@ -55,6 +60,7 @@ oc get ik
 ----
 * Manually deploy the integration into the production namespace and
 repeat the procedure.
+
 [.lines_space]
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
@@ -103,8 +109,7 @@ Complete Lab4: - Examine `create-resources.sh` script, change it as needed and r
 ./create-resources.sh
 ----
 
-
-  This will create all the resources necessary for the Integration. Note that we _must_ precreate these in advance of running `kamel promote` operation in the target (production) namespace as well. In a real scenario these would be populated by the pipeline or via GitOps. 
+This will create all the resources necessary for the Integration. Note that we _must_ precreate these in advance of running `kamel promote` operation in the target (production) namespace as well. In a real scenario these would be populated by the pipeline or via GitOps. 
 
 
 * Inspect `pipeline.yaml` and understand what it does.
