@@ -1,0 +1,2 @@
+1) oc create secret generic my-artemis-secret --from-file=client.ts
+2) kamel run --resource secret:my-artemis-secret@/etc/ssl/jms-sink ArtemisIntegration.java

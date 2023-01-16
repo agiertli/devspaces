@@ -1,0 +1,41 @@
+# Source: rhte-camelk-kamelet-bindings/templates/kamelet-bindings.yaml
+apiVersion: camel.apache.org/v1alpha1
+kind: KameletBinding
+metadata:
+  name: >- 
+   manual-attempt
+  namespace: user1-dev 
+spec:
+  replicas: 1
+  integration:
+    traits:
+      container:
+        configuration:
+          limitCPU: 500m
+          requestCPU: 50m
+          limitMemory: 1024Mi
+          requestMemory: 512Mi
+      mount:
+          resources: 
+            - secret:truststore-secret@/etc/ssl/amqp
+          configs:
+            - secret:artemis-credentials-secret
+  source:
+    ref:
+      kind: Kamelet
+      apiVersion: camel.apache.org/v1alpha1
+      name: custom-jms-amqp-10-source
+    properties:
+        destinationName: "group1-dev"
+        destinationType: "topic"
+        password: "{{amqp.password}}"
+        remoteURI:  "{{amqp.broker-url}}"
+        trustStorePassword: "{{amqp.trustStorePassword}}"
+        username: "{{amqp.username}}"
+  sink:
+    ref:
+      apiVersion: camel.apache.org/v1alpha1
+      kind: Kamelet
+      name: log-sink
+    properties:
+        showHeaders: true

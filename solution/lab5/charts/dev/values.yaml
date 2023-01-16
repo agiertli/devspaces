@@ -1,0 +1,37 @@
+ready: true # // CHANGE ME to true when you are ready to start Lab3
+userNamespace: user1-dev
+bindings:
+ - name: rhte-camelk.group1.to.group2
+   secret: artemis-credentials-secret
+   sslSecret: truststore-secret
+   source:
+    kamelet: timer-source-with-header
+    properties:
+     groupName: group1
+     message: greetings-from-red-hat-tech-exchange
+   sink:
+     kamelet:  custom-jms-amqp-10-sink
+     properties:
+      destinationName: group2-dev
+      destinationType: topic
+      password: "{{amqp.password}}"
+      remoteURI:  "{{amqp.broker-url}}"
+      trustStorePassword: "{{amqp.trustStorePassword}}"
+      username: "{{amqp.username}}"
+
+ - name: rhte-camelk.group1.to.log
+   secret: artemis-credentials-secret
+   sslSecret: truststore-secret
+   source:
+     kamelet: custom-jms-amqp-10-source  
+     properties:
+      destinationName: group1-dev
+      destinationType: topic
+      password: "{{amqp.password}}"
+      remoteURI:  "{{amqp.broker-url}}"
+      trustStorePassword: "{{amqp.trustStorePassword}}"
+      username: "{{amqp.username}}"             
+   sink:
+     kamelet: log-sink
+     properties:
+       showHeaders: true

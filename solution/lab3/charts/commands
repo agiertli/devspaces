@@ -1,0 +1,9 @@
+./utils/create-secret.sh
+
+oc create secret generic my-artemis-secret --from-file=client.ts
+
+./utils/install.sh
+
+oc get klb
+kamel get
+oc get pods

@@ -1,0 +1,53 @@
+{{ if .Values.ready}}
+{{- range $key := .Values.bindings }}
+---
+apiVersion: camel.apache.org/v1alpha1
+kind: KameletBinding
+metadata:
+  name: >- 
+   {{ .name }}
+  namespace: {{ $.Values.userNamespace }} 
+spec:
+  replicas: {{ if kindIs "float64" .replicas }}{{ .replicas }}{{ else }}{{ 1 }}{{ end }}
+  integration:
+    traits:
+      container:
+        configuration:
+          limitCPU: {{ .cpuLimit | default "500m" }}
+          requestCPU: {{ .cpuRequest | default "50m" }}
+          limitMemory: {{ .memoryLimit | default "1024Mi" }}
+          requestMemory: {{ .memoryRequest | default "512Mi" }}
+      mount:
+        {{ if .sslSecret }}
+        resources:
+          - 'secret:{{ .sslSecret }}@{{ .sslMountPath | default "/etc/ssl/certificates" }}' 
+        {{ end }}
+
+        {{ if .secret }}
+        configs:
+          - 'secret:{{ .secret }}'
+        {{ end }}          
+  source:
+    ref:
+      kind: Kamelet
+      apiVersion: camel.apache.org/v1alpha1
+      name: {{ .source.kamelet }}
+    properties:
+      {{- range $k,$v := .source.properties }}
+        {{ $k }}: {{ printf "\"%s\"" $v }}
+        {{- end}}
+  sink:
+    ref:
+      apiVersion: camel.apache.org/v1alpha1
+      kind: Kamelet
+      name: {{ .sink.kamelet }}
+    properties:
+      {{- range $k,$v := .sink.properties }}
+          {{ if eq $k "showHeaders"}}
+        {{ $k }}: {{ $v }}
+           {{ else }}
+        {{ $k }}: {{ printf "\"%s\"" $v }}
+         {{ end }}
+      {{- end}}
+{{- end }}
+{{ end }}      
