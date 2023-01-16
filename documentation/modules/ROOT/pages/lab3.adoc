@@ -108,8 +108,10 @@ $ ./install.sh
 ....
 +
 The result should look similar to this:
-+
-....
+
+[.console-output]
+[source,bash,subs="+macros,+attributes"]
+----
 $ oc get klb -n userN-dev
 NAME                           PHASE   REPLICAS
 rhte-camelk.group1.to.group2   Ready   1
@@ -119,8 +121,9 @@ rhte-camelk.group1.to.group5   Ready   1
 rhte-camelk.group1.to.group6   Ready   1
 rhte-camelk.group1.to.group7   Ready   1
 rhte-camelk.group1.to.log      Ready   1
-....
-+
+----
+
+
 The number of ``groupN.to.groupM'' bindings can differ based on the
 number of actual groups present in the lab. Don’t forget to check the
 integration logs to make sure there are no errors. You can use
