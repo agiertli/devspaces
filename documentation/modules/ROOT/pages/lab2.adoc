@@ -7,8 +7,8 @@ Red Hat ships many kamelets with the camel-k operator out of the box:
 [.console-output]
 [source,bash,subs="+macros,+attributes"]
 ----
-$  oc project userX-dev
-$  oc get kamelet | wc -l
+oc project userX-dev
+oc get kamelet | wc -l
       202
 ----
 
