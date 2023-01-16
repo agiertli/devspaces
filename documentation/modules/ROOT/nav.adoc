@@ -1,4 +1,4 @@
 * xref:01-setup.adoc[1. Setup]
 
 
-* xref:02-deploy.adoc[2. Lab 1 - Local Development]
+* xref:02-lab1.adoc[2. Lab 1 - Local Development]
