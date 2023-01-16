@@ -4,11 +4,13 @@
 
 Red Hat ships many kamelets with the camel-k operator out of the box:
 
-....
+[.console-output]
+[source,bash,subs="+macros,+attributes"]
+----
 $  oc project userX-dev
 $  oc get kamelet | wc -l
       202
-....
+----
 
 `Kamelets` are *not as flexible* as the camel components which they are
 based on. If the underlying camel component supports hundreds of
@@ -37,11 +39,13 @@ support neither authentication nor ssl*
 * Inspect the out of the box kamelet to understand its internal
 mechanics:
 
-[source,bash]
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
 ----
-$ oc project userN-dev
-$ cd basic-auth
-$ oc get kamelet jms-amqp-10-sink -o yaml | oc neat > custom-sink-kamelet.yaml
+oc project userN-dev
+cd basic-auth
+oc get kamelet jms-amqp-10-sink -o yaml | oc neat > custom-sink-kamelet.yaml
 ----
 
 * Inspect the
@@ -119,7 +123,11 @@ So we need to get a bit more creative…:
 ** trustStoreLocation (type:string)
 ** trustStorePassword (type:string)
 * Change the way `remoteURI` is defined in Kamelet definition:
-`- key: remoteURI     value: '{{remoteURI}}?transport.trustStoreLocation={{trustStoreLocation}}&transport.trustStorePassword={{trustStorePassword}}&transport.verifyHost={{verifyHost}}'`
+
+```
+   - key: remoteURI
+   value: '{{remoteURI}}?transport.trustStoreLocation={{trustStoreLocation}}&transport.trustStorePassword={{trustStorePassword}}&transport.verifyHost={{verifyHost}}'
+```
 
 By defining the remoteURI query parameters directly in the Kamelet
 definition, we will bypass camel property parser which was causing the
@@ -131,13 +139,10 @@ integration pod:
 * See file `client.ts` in your user git repository. +
 * Create a secret based on the contents of this file.
 
-
-....
-$ cd ssl
-....
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
+cd ssl
 oc create secret generic my-artemis-secret --from-file=client.ts
 ----
 * `kamel` binary allows us to reference a secret and mount it to a
