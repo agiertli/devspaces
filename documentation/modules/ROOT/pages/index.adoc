@@ -15,9 +15,6 @@ The primary goal of this lab is to enable Red Hat consultants and architects to 
 
 [.tile]
 .xref:01-setup.adoc[Environment setup and class orientation]
-* xref:01-setup.adoc#minikube[Minikube]
 
 [.tile]
 .xref:02-lab1.adoc[Lab 1 - Local Development]
-* xref:02-deploy.adoc#package[Package the Application]
-* xref:02-deploy.adoc#deploy[Deploy the Application]
