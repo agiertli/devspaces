@@ -36,14 +36,14 @@ support neither authentication nor ssl*
 
 * Inspect the out of the box kamelet to understand its internal
 mechanics:
-+
-....
+
+[source,bash]
+----
 $ oc project userN-dev
-
 $ cd basic-auth
-
 $ oc get kamelet jms-amqp-10-sink -o yaml | oc neat > custom-sink-kamelet.yaml
-....
+----
+
 * Inspect the
 https://github.com/apache/qpid-jms/blob/main/qpid-jms-client/src/main/java/org/apache/qpid/jms/JmsConnectionFactory.java[ConnectionFactory
 constructor] and see whether there is a constructor suitable for our
@@ -56,7 +56,11 @@ alter these two attributes as well:
 ** `namespace: userN-dev`
 ** `name: custom-jms-amqp-10-sink`
 * Apply the custom kamelet in your namespace, i.e. 
-`$ oc apply -f custom-sink-kamelet.yaml`
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+oc apply -f custom-sink-kamelet.yaml
+----
 * Test your kamelet by changing `ArtemisIntegration.java` to connect to
 the Artemis Broker running on OCP
 ** You can find out the Broker service url like this:
@@ -68,7 +72,13 @@ endpoint parameters:
 *** `username: admin`
 *** `password: password1!`
 * Run the integration - notice, we are now running the integration on a
-cluster (hence kamel cli) `$ kamel run ArtemisIntegration.java`
+cluster (hence kamel cli) :
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+kamel run ArtemisIntegration.java
+----
+
 * If everything went well, you should similar output in the logs in the
 started pod in your namespace:
 +
@@ -120,12 +130,16 @@ integration pod:
 
 * See file `client.ts` in your user git repository. +
 * Create a secret based on the contents of this file.
-+
+
+
 ....
 $ cd ssl
-
-$ oc create secret generic my-artemis-secret --from-file=client.ts
 ....
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+oc create secret generic my-artemis-secret --from-file=client.ts
+----
 * `kamel` binary allows us to reference a secret and mount it to a
 specified location - mount it somewhere under `/etc`
 +
@@ -143,9 +157,11 @@ opposed amqp) - Get the new _ssl_ service name from `tooling` namespace
 
 Run your integration:
 
-....
-$ kamel run --resource secret:my-artemis-secret@/etc/ssl/jms-sink ArtemisIntegration.java
-....
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+kamel run --resource secret:my-artemis-secret@/etc/ssl/jms-sink ArtemisIntegration.java
+----
 
 === Summary
 

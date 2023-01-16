@@ -36,12 +36,13 @@ https://camel.apache.org/manual/camel-jbang.html
 run it
 
 
-[,console]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
 ----
 camel init ArtemisIntegration.java
 ----
-
-[,console]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
 ----
 camel run ArtemisIntegration.java
 ----
