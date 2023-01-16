@@ -14,7 +14,7 @@ Most of the operators and utilities are installed in the `tooling` namespace to 
  - AMQ 7 ssl connection url:  `amqps://rhte-artemis-one-way-ssl-0-svc.tooling.svc.cluster.local:5673`
  - Dev Spaces URL: `oc get route <TODO> -n tooling`
  - Gitea URL: `oc get route <TODO> -n tooling`
- - ArgoCD url: `oc get route <TODO> -n openshift-gitops`
+ - ArgoCD URL: `oc get route <TODO> -n openshift-gitops`
 
 
 
