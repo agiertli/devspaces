@@ -1,11 +1,11 @@
-= Welcome to Template Tutorial
+= Welcome to camel-k : Beyond Demo lab
 :page-layout: home
 :!sectids:
 
 [.text-center.strong]
 == Publish Services to Kubernetes
 
-A Kubernetes tutorial to show how you can deploy a Java service to a Kubernetes cluster as it was a child game.
+Welcome to Cloud Native Integration with camel-k lab. We are excited to have you. The focus of this lab is to share field experience from real, production, camel-k deployment. We will not be focusing on the creation of the complex camel integration. Instead, we will be focusing on everything else - building, deploying, testing, troubleshooting and customizing. The aim is to cover a full lifecycle of developing a camel-k application. From the initial bootstrapping all the way to production deployment. Let's get down to it, and most importantly, let's have some fun.
 
 [.tiles.browse]
 == Browse modules
