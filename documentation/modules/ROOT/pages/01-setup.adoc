@@ -7,15 +7,26 @@ image::argo-overview.png[High level argo overview]
 
 Most of the operators and utilities are installed in the `tooling` namespace to which every user has read access.  Here comes the list of all the useful information you need to know:
 
-- OpenShift Console URL: <TODO>
- - OpenShift username/password: `user` / `password`
- - AMQ 7 Broker username/password: `admin` / `password1!`
- - AMQ 7 Broker client truststore password: `password1!`
- - AMQ 7 Broker non-ssl connection url: `amqp://rhte-artemis-no-ssl-0-svc.tooling.svc.cluster.local:5672`
- - AMQ 7 Broker ssl connection url:  `amqps://rhte-artemis-one-way-ssl-0-svc.tooling.svc.cluster.local:5673`
- - Dev Spaces URL: `oc get route <TODO> -n tooling`
- - Gitea URL: `oc get route <TODO> -n tooling`
- - ArgoCD URL: `oc get route <TODO> -n openshift-gitops`
+ * OpenShift Console URL: <TODO>
+ * OpenShift username/password: `user` / `password`
+ * AMQ 7 Broker username/password: `admin` / `password1!`
+ * AMQ 7 Broker client truststore password: `password1!`
+ * AMQ 7 Broker non-ssl connection url:
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+amqp://rhte-artemis-no-ssl-0-svc.tooling.svc.cluster.local:5672
+----
+ * AMQ 7 Broker ssl connection url:
+ 
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+ amqps://rhte-artemis-one-way-ssl-0-svc.tooling.svc.cluster.local:5673
+----
+ * Dev Spaces URL: `oc get route <TODO> -n tooling`
+ * Gitea URL: `oc get route <TODO> -n tooling`
+ * ArgoCD URL: `oc get route <TODO> -n openshift-gitops`
 
 
 
