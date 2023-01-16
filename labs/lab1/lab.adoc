@@ -35,7 +35,6 @@ run it
 +
 ....
 $ camel init ArtemisIntegration.java
-
 $ camel run ArtemisIntegration.java
 ....
 * You should see similar output in the console log

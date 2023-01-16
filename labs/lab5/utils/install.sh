@@ -1,0 +1,1 @@
+helm upgrade --install bindings . -f dev/values.yaml

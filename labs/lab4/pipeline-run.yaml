@@ -1,0 +1,30 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: pipeline-cicd-run
+  generateName: camel-k-pipeline-
+spec:
+  pipelineRef:
+    name: pipeline-cicd
+  taskRunSpecs:
+    - pipelineTaskName: kamel-run
+      taskServiceAccountName: camel-k-pipeline-sa
+    - pipelineTaskName: kamel-promote
+      taskServiceAccountName: camel-k-pipeline-sa   
+  workspaces:
+  - name: shared-data
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+  - name: git-credentials
+    secret:
+      secretName: git-credentials
+  params:
+  - name: repo-url
+    value: <your gitea repository>
+  - name: repo-branch
+    value: main  
