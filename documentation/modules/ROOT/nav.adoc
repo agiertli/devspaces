@@ -1,9 +1,9 @@
 * xref:01-setup.adoc[0. Setup]
 
 
-* xref:../../../../labs/lab1/lab.adoc[1. Lab 1 - Local Development]
-* xref:../../../../labs/lab2/lab.adoc[2. Lab 2 - Customizing Kamelets]
-* xref:../../../../labs/lab3/lab.adoc[3. Lab 3 - KameletBinding evolution]
-* xref:../../../../labs/lab4/lab.adoc[4. Lab 4 - Traditional CI/CD]
-* xref:../../../../labs/lab5/lab.adoc[5. Lab 5 - GitOps styled Continuous Delivery]
+* xref:lab1.adoc[1. Lab 1 - Local Development]
+* xref:lab2.adoc[2. Lab 2 - Customizing Kamelets]
+* xref:lab3.adoc[3. Lab 3 - KameletBinding evolution]
+* xref:lab4.adoc[4. Lab 4 - Traditional CI/CD]
+* xref:lab5.adoc[5. Lab 5 - GitOps styled Continuous Delivery]
 
