@@ -3,8 +3,8 @@ runtime:
 
 site:
   title: Red Hat Tech Exchange 2023
-  url: https://agiertli.github.io/rhte-camelk-lab-instructions/template-tutorial/index.html
-  start_page: template-tutorial::index.adoc
+  url: https://agiertli.github.io/rhte-camelk-lab-instructions/tutorial/index.html
+  start_page: tutorial::index.adoc
 
 content:
   sources:

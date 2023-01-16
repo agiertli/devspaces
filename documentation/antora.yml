@@ -1,6 +1,6 @@
-name: template-tutorial
-title: Template Tutorial
-version: master
+name: camel-k-lab
+title: Camel-K Beyond Demo
+version: main
 nav:
   - modules/ROOT/nav.adoc
 
