@@ -35,10 +35,9 @@ read all the messages you as a group received.
 
 The output of the helm chart should produce this:
 
-image::helm-chart-design.svg[Helm chart design for
-Group1,title="Helm Chart design for Group1"]
+image::helm-chart-design.svg[Helm chart design for Group1,title="Helm Chart design for Group1"]
 
-`The actual helm templates were already developed for you.`
+The actual helm templates were already developed for you.
 
 While helm and KameletBindings go really well together - because it’s
 really easy to template the bindings, Kamelets also heavily depend on
@@ -50,12 +49,15 @@ using `{{ camel-k-placeholders }}` which conflicts with
 * Let’s start by secret provisioning. If you finished previous lab, you
 should already have secret containing `client.ts` available in
 `userN-dev` namespace. If not, make sure to create it now, i.e.:
-+
-....
-$ cd lab3/utils
 
-$ oc create secret generic my-artemis-secret --from-file=client.ts
-....
+
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+cd lab3/utils
+oc create secret generic my-artemis-secret --from-file=client.ts
+----
 
 * Add one more secret - previously, our Java integration contained some
 hardcoded values with sensitive information (such as broker
@@ -70,10 +72,13 @@ Let’s create _another_ secret which will contain:
 *You can use `utils/create-secrets.sh` and `utils/artemis-secret.yaml`
 to assist with this task.*
 +
-....
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
 ## Change the values in create-secrets.sh
-$ ./create-secrets.sh
-....
+ ./create-secrets.sh
+----
 
 *2. Helm + Kamel = 💪*
 
@@ -102,10 +107,13 @@ supplying helm values, and not to deal with the underlying templates
 appropriate bindings as per the Helm Diagram screenshot. There are
 scripts ready for you in `utils` to test the helm chart.
 +
-....
-$ oc project userN-dev
-$ ./install.sh
-....
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+oc project userN-dev
+./install.sh
+----
 +
 The result should look similar to this:
 
@@ -124,7 +132,7 @@ rhte-camelk.group1.to.log      Ready   1
 ----
 
 
-The number of ``groupN.to.groupM'' bindings can differ based on the
+The number of `groupN.to.groupM` bindings can differ based on the
 number of actual groups present in the lab. Don’t forget to check the
 integration logs to make sure there are no errors. You can use
 `kamel get` and `kamel log`, or plain `oc`.

@@ -35,22 +35,33 @@ $ oc delete ik ```
 * Start the example Integration which is provided in the lab directory
 in dev namespace:
 +
-....
-$ cd lab4
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+cd lab4
+kamel run MutableIntegration.java --namespace userN-dev
+----
 
-$ kamel run MutableIntegration.java --namespace userN-dev
 
-You should see a similar result to:
-Unable to verify existence of operator id [camel-k] due to lack of user privileges
-Integration "mutable-integration" created
-....
 * Find out what IntegrationKit is your integration using and note down
-the name of the container image ``` $ oc get it mutable-integration
-+
-$ oc get ik ```
+the name of the container image 
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+oc get it mutable-integration
+oc get ik 
+----
 * Manually deploy the integration into the production namespace and
 repeat the procedure.
-`$ kamel run MutableIntegration.java --namespace userN-prod`
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+kamel run MutableIntegration.java --namespace userN-prod
+----
+
 * Are the container images in *dev* and *prod* the *same or not?*
 
 Let’s examine what happened:
@@ -84,12 +95,17 @@ image::tekton.png[Tekton Pipeline,title="Tekton Pipeline"]
 
 `In a real world pipeline there would be some integration and smoke tests as well, but this is beyond the scope of this lab.`
 
-Complete Lab4: - Examine `create-resources.sh` script,
-`change it as needed` and `run it` `$ ./create-resources.sh`
+Complete Lab4: - Examine `create-resources.sh` script, change it as needed and run it 
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+./create-resources.sh
+----
 
-....
+
   This will create all the resources necessary for the Integration. Note that we _must_ precreate these in advance of running `kamel promote` operation in the target (production) namespace as well. In a real scenario these would be populated by the pipeline or via GitOps. 
-....
+
 
 * Inspect `pipeline.yaml` and understand what it does.
 ** Fix the parameters of `kamel run task` (line 331-337).
@@ -104,10 +120,15 @@ Resources] if you need help.
 ** Fix parameters of `kamel promote task` (line 346-352)
 * Inspect `pipeline-run.yaml` and fix the git repo url at line 28
 * Apply `pipeline.yaml` and `pipeline-run.yaml` onto your OCP cluster.
-You can inspect the Tekton pipelines also via OpenShift console ``` $ oc
-apply -f pipeline.yaml -n userN-dev
-+
-$ oc apply -f pipeline-run.yaml -n userN-dev ```
+You can inspect the Tekton pipelines also via OpenShift console
+
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+oc apply -f pipeline.yaml -n userN-dev
+oc apply -f pipeline-run.yaml -n userN-dev
+----
 * Troubleshoot any potential issues and verify whether the container
 images are the same for both, dev and prod integration
 
