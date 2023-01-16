@@ -14,19 +14,19 @@ The primary goal of this lab is to enable Red Hat consultants and architects to 
 == Browse modules
 
 [.tile]
-* link:01-setup.adoc[Environment setup and class orientation]
+* xref:01-setup.adoc[Environment setup and class orientation]
 
 [.tile]
-* link:lab1.adoc[Lab 1 - Local Development]
+* xref:lab1.adoc[Lab 1 - Local Development]
 
 [.tile]
-* link:lab2.adoc[Lab 2 - Customizing Kamelets]
+* xref:lab2.adoc[Lab 2 - Customizing Kamelets]
 
 [.tile]
-* link:lab3.adoc[Lab 3 - KameletBinding evolution]
+* xref:lab3.adoc[Lab 3 - KameletBinding evolution]
 
 [.tile]
-* link:lab4.adoc[Lab 4 - Traditional CI/CD]
+* xref:lab4.adoc[Lab 4 - Traditional CI/CD]
 
 [.tile]
-* link:lab5.adoc[Lab 5 - GitOps styled Continuous Delivery]
+* xref:lab5.adoc[Lab 5 - GitOps styled Continuous Delivery]
