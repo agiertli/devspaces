@@ -58,8 +58,11 @@ Throughout this lab, we will be developing a very *simple integration
 which will talk to an Artemis broker*.
 
 Inside your workspace IDE, there is already artemis container up and
-running with following characteristics: - `AMQ_USER=admin` -
-`AMQ_PASSWORD=password1!` - Access to the artemis pod with dev spaces is
+running with following characteristics:
+
+ - `AMQ_USER=admin`
+ - `AMQ_PASSWORD=password1!`
+ - Access to the artemis pod with dev spaces is
 done using `artemis-amqp-service`.
 
 *2. Connect `ArtemisIntegration` to the local Artemis*
