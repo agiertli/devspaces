@@ -113,11 +113,13 @@ values:
 *** remoteURI - `amqp://artemis-amqp-service:5672`
 * Run the `ArtemisIntegration.java` again, you should see following in
 the logs:
-+
-....
+
+[.console-output]
+[source,bash,subs="+macros,+attributes"]
+----
 2022-11-29 21:11:47.678  INFO 74446 --- [ - timer://java] ArtemisIntegration.java:14               : Hello Camel from java
 2022-11-29 21:11:48.088  INFO 74446 --- [p-service:5672]] org.apache.qpid.jms.JmsConnection        : Connection ID:53273bd1-8d00-4c64-8988-cecd79b82dd8:8 connected to server: amqp://artemis-amqp-service:5672
-....
+----
 
 === Summary
 
@@ -126,7 +128,7 @@ integrations locally which can be useful in early stages of development.
 * If your integration depends on 3rd party services (be it AMQ Broker,
 Kafka cluster, etc) you could mock those locally by using `podman` or
 `docker`. Engineering is working to improve the local development
-experience, especially the ``mocking'' part.
+experience, especially the mocking part.
 * `Kamelets` can be extremely useful if you want to hide complexity of
 the underlying camel components and enable non-camel developers to
 integrate with services easily.
