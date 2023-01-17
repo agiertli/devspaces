@@ -25,8 +25,6 @@ locally without depending on cloud access:
 
 === Task
 
-
-
 *0. Log into your online IDE powered by Red Hat OpenShift Dev Spaces*
 
 URL can be retrieved by following instructions in xref:01-setup.adoc[Setup chapter] .
@@ -34,6 +32,15 @@ Workspace has been already pre-created for you and you simply need to open it - 
 
 .Dev Spaces Dashboard
 image::devspaces.png["Dev Spaces Dashboard]
+
+The next useful thing is to access Dev Spaces terminal, which immediatelly gets you access to OpenShift 4 Cluster.
+
+.Opening Dev Spaces Terminal
+image::terminal.png["Dev Spaces terminal]
+
+You will be already logged into the OpenShift with access to various namespaces useful for the following lab work.
+.OpenShift namespaces
+image::namespaces.png["OpenShift namespaces]
 
 *1. Initialize and run the hello world integration*
 
