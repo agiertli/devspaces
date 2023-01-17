@@ -135,8 +135,7 @@ By defining the remoteURI query parameters directly in the Kamelet
 definition, we will bypass camel property parser which was causing the
 `trustStorePassword` param to be lost. After you are done, don't forget to `oc apply -f` your kamelet changes to the cluster.
 
-Next we need to *inject a client truststore* into the
-integration pod:
+Next we need to *inject a client truststore* into the integration pod:
 
 * See file `client.ts` in your user git repository. +
 * Create a secret based on the contents of this file.
