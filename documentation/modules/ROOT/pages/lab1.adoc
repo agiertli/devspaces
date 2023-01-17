@@ -39,6 +39,7 @@ The next useful thing is to access Dev Spaces terminal, which immediatelly gets 
 image::terminal.png["Dev Spaces terminal]
 
 You will be already logged into the OpenShift with access to various namespaces useful for the following lab work.
+
 .OpenShift namespaces
 image::namespaces.png["OpenShift namespaces]
 
