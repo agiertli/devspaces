@@ -128,7 +128,7 @@ So we need to get a bit more creative. Open the kamelet yaml again and add three
 [source,bash, subs="+macros,+attributes"]
 ----
    - key: remoteURI
-   value: '{{remoteURI}}?transport.trustStoreLocation={{trustStoreLocation}}&transport.trustStorePassword={{trustStorePassword}}&transport.verifyHost={{verifyHost}}'
+     value: '{{remoteURI}}?transport.trustStoreLocation={{trustStoreLocation}}&transport.trustStorePassword={{trustStorePassword}}&transport.verifyHost={{verifyHost}}'
 ----
 
 By defining the remoteURI query parameters directly in the Kamelet
