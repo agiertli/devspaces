@@ -27,12 +27,13 @@ locally without depending on cloud access:
 
 
 
-*1. Log into your online IDE powered by Red Hat OpenShift Dev Spaces - URL can be retrieved by following instructions in xref:01-setup.adoc[Setup chapter] .
+* 0. Log into your online IDE powered by Red Hat OpenShift Dev Spaces - URL can be retrieved by following instructions in xref:01-setup.adoc[Setup chapter] .
 Workspace has been already pre-created for you and you simply need to open it - the first time you do it might take up to 1 minute.
 
 .Dev Spaces Dashboard
 image::devspaces.png["Dev Spaces Dashboard]
 
+* 1. Initialize and run the hello world integration
 
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
