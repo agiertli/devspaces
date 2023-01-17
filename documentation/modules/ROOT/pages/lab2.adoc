@@ -159,12 +159,12 @@ specified location - mount it somewhere under `/etc`, i.e.:
 See https://camel.apache.org/camel-k/1.10.x/configuration/runtime-resources.html[camel-k documentation] for more details.
 
 
-Update your `ArtemisIntegration.java`: 
+Update your `ArtemisIntegration.java`:
  
  * Update the AMQ URL
   ** Scheme is now `amqps` (as opposed amqp), get the full url from xref:01-setup.adoc[Setup chapter]
- * Configure trustStorePassword
- * Configure trustStoreLocation
+ * Configure trustStorePassword kamelet parameter
+ * Configure trustStoreLocation kamelet parameter
  ** TrustStoreLocation should match the value you are passing via `kamel run --resource` command
 
 Run your integration:
