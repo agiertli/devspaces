@@ -15,7 +15,7 @@ Most of the operators and utilities are installed in the `tooling` namespace to 
 <TODO>
 ----
 
- * OpenShift username/password: `user` / `password`
+ * OpenShift username/password: `user` / `openshift`
  * Gitea username/password: `userN` / `password` (N = [1..45])
  * AMQ 7 Broker username/password: `admin` / `password1!`
  * AMQ 7 Broker client truststore password: `password1!`
