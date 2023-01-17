@@ -101,6 +101,7 @@ to fully fledged `camel-k` integration will be straightforward.
 *Finish the Lab 1 by following steps below:*
 
 * Locate amqp compatible kamelet :
+
 [.lines_space]
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
@@ -109,11 +110,12 @@ camel catalog kamelet | grep amqp
 ----
 
 * Familiarize yourself with the *AMQP Sink Kamelet*:
+
 [.lines_space]
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-$ camel doc jms-amqp-10-sink
+camel doc jms-amqp-10-sink
 ----
 
 * Change the `ArtemisIntegration.java` as follows:
