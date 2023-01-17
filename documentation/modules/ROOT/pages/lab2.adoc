@@ -151,7 +151,12 @@ oc create secret generic my-artemis-secret --from-file=client.ts
 * `kamel` binary allows us to reference a secret and mount it to a
 specified location - mount it somewhere under `/etc`, i.e.:
 
-`--resource secret:secretName@/where/you/want/to/mount/it`
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+--resource secret:secretName@/where/you/want/to/mount/it
+----
 
 See https://camel.apache.org/camel-k/1.10.x/configuration/runtime-resources.html[camel-k documentation] for more details.
 
