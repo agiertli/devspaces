@@ -70,14 +70,7 @@ oc apply -f custom-sink-kamelet.yaml
 
 * Test your kamelet by changing `ArtemisIntegration.java` to connect to
 the Artemis Broker running on OCP
-** You can find out the Broker service url like this:
-`$ oc get svc -n tooling | grep artemis-no-ssl`
-** TIP: Correct syntax to call services outside of current namespace is
-`<service>.<pod_namespace>.svc.cluster.local`
-** Use following credentials to connect, simply pass them as kamelet
-endpoint parameters:
-*** `username: admin`
-*** `password: password1!`
+* You can find the Broker URL, username, password in xref:01-setup.adoc[Setup chapter]
 * Run the integration - notice, we are now running the integration on a
 cluster (hence kamel cli) :
 
@@ -123,35 +116,39 @@ Unfortunately RAW
 https://github.com/apache/camel-kamelets/issues/1200[doesn’t seem to
 work] in the camel-k 1.8 operator version.
 
-So we need to get a bit more creative…:
+So we need to get a bit more creative. Open the kamelet yaml again and add three more Kamelet parameters:
 
-* Add three more Kamelet parameters:
-** verifyHost (type: string, default:false)
-** trustStoreLocation (type:string)
-** trustStorePassword (type:string)
-* Change the way `remoteURI` is defined in Kamelet definition:
+ * verifyHost (type: string, default:false)
+ * trustStoreLocation (type:string)
+ * trustStorePassword (type:string)
+ * Change the way `remoteURI` is defined in Kamelet definition:
 
-```
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
    - key: remoteURI
    value: '{{remoteURI}}?transport.trustStoreLocation={{trustStoreLocation}}&transport.trustStorePassword={{trustStorePassword}}&transport.verifyHost={{verifyHost}}'
-```
+----
 
 By defining the remoteURI query parameters directly in the Kamelet
 definition, we will bypass camel property parser which was causing the
-`trustStorePassword` param to ``be lost''.
+`trustStorePassword` param to be lost. After you are done, don't forget to `oc apply -f` your kamelet changes to the cluster.
 
-Do not forget you need to *inject a client truststore* into the
+Next we need to *inject a client truststore* into the
 integration pod:
 
 * See file `client.ts` in your user git repository. +
 * Create a secret based on the contents of this file.
 
+[.lines_space]
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
 cd ssl
 oc create secret generic my-artemis-secret --from-file=client.ts
 ----
+
 * `kamel` binary allows us to reference a secret and mount it to a
 specified location - mount it somewhere under `/etc`, i.e.:
 
@@ -168,6 +165,7 @@ opposed amqp) - Get the new _ssl_ service name from `tooling` namespace
 
 Run your integration:
 
+[.lines_space]
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
