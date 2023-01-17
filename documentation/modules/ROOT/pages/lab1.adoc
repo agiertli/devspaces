@@ -25,15 +25,13 @@ locally without depending on cloud access:
 
 === Task
 
-*1. Test the `camel/jbang` cli tooling to understand how the local
-development experience looks like:*
 
-* SKIP NEXT 2 STEPS IF USING DEVSPACES
-* Install JBang as per https://www.jbang.dev/download/
-* Install `camel` cli as per
-https://camel.apache.org/manual/camel-jbang.html
-* Create a `ArtemisIntegration.java` camel Route using `camel` cli and
-run it
+
+*1. Log into your online IDE powered by Red Hat OpenShift Dev Spaces - URL can be retrieved by following instructions in xref:01-setup.adoc[Setup chapter] .
+Workspace has been already pre-created for you and you simply need to open it - the first time you do it might take up to 1 minute.
+
+.Dev Spaces Dashboard
+image::devspaces.png["Dev Spaces Dashboard]
 
 
 [.console-input]
