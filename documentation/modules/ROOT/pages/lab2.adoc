@@ -157,7 +157,7 @@ specified location - mount it somewhere under `/etc`, i.e.:
 
 `--resource secret:secretName@/where/you/want/to/mount/it`
 
-See [documentation](https://camel.apache.org/camel-k/1.10.x/configuration/runtime-resources.html) for more details.
+See https://camel.apache.org/camel-k/1.10.x/configuration/runtime-resources.html[camel-k documentation] for more details.
 
 
 Update your `ArtemisIntegration.java`: - URI scheme is now `amqps` (as
