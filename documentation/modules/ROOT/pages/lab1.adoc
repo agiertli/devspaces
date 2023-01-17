@@ -100,9 +100,22 @@ to fully fledged `camel-k` integration will be straightforward.
 
 *Finish the Lab 1 by following steps below:*
 
-* Locate amqp compatible kamelet `$ camel catalog kamelet | grep amqp`
-* Familiarize yourself with the *AMQP Sink Kamelet*
-`$ camel doc jms-amqp-10-sink`
+* Locate amqp compatible kamelet :
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+camel catalog kamelet | grep amqp
+----
+
+* Familiarize yourself with the *AMQP Sink Kamelet*:
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+$ camel doc jms-amqp-10-sink
+----
+
 * Change the `ArtemisIntegration.java` as follows:
 ** remove `;` after the `log` command and add another step in the route
 using `to` DSL
