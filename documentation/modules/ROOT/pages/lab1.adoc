@@ -31,17 +31,17 @@ URL can be retrieved by following instructions in xref:01-setup.adoc[Setup chapt
 Workspace has been already pre-created for you and you simply need to open it - the first time you do it might take up to 1 minute.
 
 .Dev Spaces Dashboard
-image::devspaces.png["Dev Spaces Dashboard, link="devspaces.png"]
+image::devspaces.png["Dev Spaces Dashboard"]
 
 The next useful thing is to access Dev Spaces terminal, which immediatelly gets you access to OpenShift 4 Cluster.
 
 .Opening Dev Spaces Terminal
-image::terminal.png["Dev Spaces terminal]
+image::terminal.png["Dev Spaces terminal"]
 
 You will be already logged into the OpenShift with access to various namespaces useful for the following lab work.
 
 .OpenShift namespaces
-image::namespaces.png["OpenShift namespaces]
+image::namespaces.png["OpenShift namespaces"]
 
 *1. Initialize and run the hello world integration*
 
