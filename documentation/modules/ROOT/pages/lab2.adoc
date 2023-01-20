@@ -90,7 +90,7 @@ started pod in your namespace:
 2022-12-01 21:29:52,693 INFO  [org.apa.qpi.jms.JmsConnection] (AmqpProvider :(1556):[amqp://rhte-artemis-no-ssl-0-svc.tooling.svc.cluster.local:5672]) Connection ID:ef32e5da-b4a2-4172-bae8-50b0c03b216a:1556 connected to server: amqp://rhte-artemis-no-ssl-0-svc.tooling.svc.cluster.local:5672   
 ----
 
-* You might see this error `Unable to verify existence of operator id [camel-k] due to lack of user privileges`. This is a known camel-k issue(https://github.com/apache/camel-k/issues/3996) which can safely be ignored
+NOTE: You might see this error `Unable to verify existence of operator id [camel-k] due to lack of user privileges`. This is a known https://github.com/apache/camel-k/issues/3996[camel-k issue] which can safely be ignored
 
 *2. Add one-way ssl*
 
