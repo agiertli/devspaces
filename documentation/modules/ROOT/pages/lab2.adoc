@@ -12,9 +12,9 @@ oc get kamelet | wc -l
       202
 ----
 
-`Kamelets` are *not as flexible* as the camel components which they are
+A single `Kamelet` is *not as flexible* as the camel components which they are
 based on. If the underlying camel component supports hundreds of
-parameters, the corresponding kamelet only expose a couple, chances are,
+parameters, the corresponding kamelet usually only expose a couple, chances are,
 the out of the box kamelet will not be directly useful at your customer
 or for your use case.
 
@@ -23,8 +23,8 @@ People often don’t realize that `kamelet` can, and even should be,
 out of using them - by tailoring them precisely for your particular use
 case. And *this is what we are going to do in the Lab 2.*
 
-`Kamelets` can be `Sources` or `Sinks` and are connected throught
-`KameletBindings`
+`Kamelets` can be `Sources` or `Sinks` and can be connected throughout
+`KameletBindings`, but they can also be used in a camel-k integration or even in CSB or CEQ based deployments, which makes them very versatile. 
 
 image::kamelets.png[Kamelets Architecture,title="Kamelets Architecture"]
 
