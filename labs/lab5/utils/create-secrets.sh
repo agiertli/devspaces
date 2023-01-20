@@ -8,4 +8,4 @@ oc process -f artemis-secret.yaml \
 | oc create -f - -o yaml --dry-run=client | kubeseal --controller-namespace tooling --controller-name sealed-secrets-controller --format yaml > sealed-amq-secret.yaml
 
 echo "Creating truststore secret"
- oc create secret generic truststore-secret --from-file=client.ts -o yaml --dry-run=client | kubeseal --controller-namespace tooling --controller-name sealed-secrets-controller --format yaml > truststore-secret.yaml
+ oc create secret generic client-truststore --from-file=client.ts -o yaml --dry-run=client | kubeseal --controller-namespace tooling --controller-name sealed-secrets-controller --format yaml > truststore-secret.yaml

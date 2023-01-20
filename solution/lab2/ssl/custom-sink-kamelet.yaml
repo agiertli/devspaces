@@ -49,7 +49,7 @@ spec:
   dependencies:
   - camel:jms
   - camel:kamelet
-  - mvn:org.apache.qpid:qpid-jms-client:0.55.0.redhat-00008
+  - mvn:org.apache.qpid:qpid-jms-client:1.0.0
   template:
     beans:
     - name: connectionFactoryBean

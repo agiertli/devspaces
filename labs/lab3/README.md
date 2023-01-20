@@ -41,7 +41,7 @@ __1. Create Secrets__
   ```
   $ cd lab3/utils
 
-  $ oc create secret generic my-artemis-secret --from-file=client.ts
+  $ oc create secret generic client-truststore --from-file=client.ts
   ```
 
 <br/>

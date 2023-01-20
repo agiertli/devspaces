@@ -33,7 +33,7 @@ __1. Support basic authentication against Artemis broker__
    ```
    $ oc project userN-dev
 
-   $ cd basic-auth
+   $ mkdir basic-auth
 
    $ oc get kamelet jms-amqp-10-sink -o yaml | oc neat > custom-sink-kamelet.yaml
    ```
@@ -103,7 +103,7 @@ Do not forget you need to __inject a client truststore__ into the integration po
   ```
   $ cd ssl
 
-  $ oc create secret generic my-artemis-secret --from-file=client.ts
+  $ oc create secret generic client-truststore --from-file=client.ts
   ``` 
 - `kamel` binary allows us to reference a secret and mount it to a specified location - mount it somewhere under `/etc`
   ```
@@ -120,7 +120,7 @@ Update your `ArtemisIntegration.java`:
 
 Run your integration:
 ```
-$ kamel run --resource secret:my-artemis-secret@/etc/ssl/jms-sink ArtemisIntegration.java
+$ kamel run --resource secret:client-truststore@/etc/ssl/jms-sink ArtemisIntegration.java
 ```
 
 <br/>

@@ -5,7 +5,7 @@ userNamespace: userN-prod # // CHANGE ME !!!
 bindings:
  - name: rhte-camelk.group1.to.group2
    secret: artemis-credentials-secret
-   sslSecret: truststore-secret
+   sslSecret: client-truststore
    source:
     kamelet: timer-source-with-header
     properties:
@@ -23,7 +23,7 @@ bindings:
 
  - name: rhte-camelk.group1.to.log
    secret: artemis-credentials-secret
-   sslSecret: truststore-secret
+   sslSecret: client-truststore
    source:
      kamelet: custom-jms-amqp-10-source  
      properties:

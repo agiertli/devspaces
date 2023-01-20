@@ -55,8 +55,9 @@ should already have secret containing `client.ts` available in
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-cd lab3/utils
-oc create secret generic my-artemis-secret --from-file=client.ts
+oc project userN-dev &&
+cd utils &&
+oc create secret generic client-truststore --from-file=client.ts
 ----
 
 * Add one more secret - previously, our Java integration contained some
@@ -110,7 +111,7 @@ scripts ready for you in `utils` to test the helm chart.
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-oc project userN-dev
+oc delete kamelet custom-jms-amqp-10-sink &&
 ./install.sh
 ----
 +

@@ -7,7 +7,8 @@ Red Hat ships many kamelets with the camel-k operator out of the box:
 [.console-output]
 [source,bash,subs="+macros,+attributes"]
 ----
-oc project userX-dev
+oc project userN-dev
+
 oc get kamelet | wc -l
       202
 ----
@@ -43,8 +44,8 @@ mechanics:
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-oc project userN-dev
-cd basic-auth
+mkdir basic-auth && cd basic-auth
+
 oc get kamelet jms-amqp-10-sink -o yaml | oc neat > custom-sink-kamelet.yaml
 ----
 
@@ -118,7 +119,7 @@ Unfortunately RAW
 https://github.com/apache/camel-kamelets/issues/1200[doesn’t seem to
 work] in the camel-k 1.8 operator version.
 
-So we need to get a bit more creative. Open the kamelet yaml again and add three more Kamelet parameters:
+So we need to get a bit more creative. *Open your custom-jms-amqp-10-sink kamelet yaml again and add three more Kamelet parameters:*
 
  * verifyHost (type: string, default:false)
  * trustStoreLocation (type:string)
@@ -133,7 +134,15 @@ So we need to get a bit more creative. Open the kamelet yaml again and add three
      value: '{{remoteURI}}?transport.trustStoreLocation={{trustStoreLocation}}&transport.trustStorePassword={{trustStorePassword}}&transport.verifyHost={{verifyHost}}'
 ----
 
-By defining the remoteURI query parameters directly in the Kamelet definition, we will bypass camel property parser which was causing the `trustStorePassword` param to be lost. After you are done, don't forget to `oc apply -f` your kamelet changes to the cluster.
+By defining the remoteURI query parameters directly in the Kamelet definition, we will bypass camel property parser which was causing the `trustStorePassword` param to be lost. 
+After you are done:
+
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+cd ../ssl && oc apply -f custom-sink-kamelet.yaml
+----
 
 Next we need to *inject a client truststore* into the integration pod:
 
@@ -144,7 +153,6 @@ Next we need to *inject a client truststore* into the integration pod:
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-cd ssl
 oc create secret generic client-truststore --from-file=client.ts
 ----
 

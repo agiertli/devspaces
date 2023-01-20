@@ -17,7 +17,7 @@ spec:
           requestMemory: 512Mi
       mount:
           resources: 
-            - secret:truststore-secret@/etc/ssl/amqp
+            - secret:client-truststore@/etc/ssl/amqp
           configs:
             - secret:artemis-credentials-secret
   source:

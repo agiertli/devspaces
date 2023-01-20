@@ -1,8 +1,8 @@
-userNamespace: user1-prod
+userNamespace: user1-dev
 bindings:
  - name: rhte-camelk.group1.to.group2
    secret: artemis-credentials-secret
-   sslSecret: my-artemis-secret
+   sslSecret: client-truststore
    source:
     kamelet: timer-source-with-header
     properties:
@@ -11,7 +11,7 @@ bindings:
    sink:
      kamelet:  custom-jms-amqp-10-sink
      properties:
-      destinationName: group2-prod
+      destinationName: group2-dev
       destinationType: topic
       password: "{{amqp.password}}"
       remoteURI:  "{{amqp.broker-url}}"
@@ -20,7 +20,7 @@ bindings:
 
  - name: rhte-camelk.group1.to.group3
    secret: artemis-credentials-secret
-   sslSecret: my-artemis-secret
+   sslSecret: client-truststore
    source:
     kamelet: timer-source-with-header
     properties:
@@ -29,7 +29,7 @@ bindings:
    sink:
      kamelet:  custom-jms-amqp-10-sink
      properties:
-      destinationName: group3-prod
+      destinationName: group3-dev
       destinationType: topic
       password: "{{amqp.password}}"
       remoteURI:  "{{amqp.broker-url}}"
@@ -39,7 +39,7 @@ bindings:
 
  - name: rhte-camelk.group1.to.group4
    secret: artemis-credentials-secret
-   sslSecret: my-artemis-secret
+   sslSecret: client-truststore
    source:
     kamelet: timer-source-with-header
     properties:
@@ -48,7 +48,7 @@ bindings:
    sink:
      kamelet:  custom-jms-amqp-10-sink
      properties:
-      destinationName: group4-prod
+      destinationName: group4-dev
       destinationType: topic
       password: "{{amqp.password}}"
       remoteURI:  "{{amqp.broker-url}}"
@@ -57,7 +57,7 @@ bindings:
 
  - name: rhte-camelk.group1.to.group5
    secret: artemis-credentials-secret
-   sslSecret: my-artemis-secret
+   sslSecret: client-truststore
    source:
     kamelet: timer-source-with-header
     properties:
@@ -66,7 +66,7 @@ bindings:
    sink:
      kamelet:  custom-jms-amqp-10-sink
      properties:
-      destinationName: group5-prod
+      destinationName: group5-dev
       destinationType: topic
       password: "{{amqp.password}}"
       remoteURI:  "{{amqp.broker-url}}"
@@ -75,7 +75,7 @@ bindings:
 
  - name: rhte-camelk.group1.to.group6
    secret: artemis-credentials-secret
-   sslSecret: my-artemis-secret
+   sslSecret: client-truststore
    source:
     kamelet: timer-source-with-header
     properties:
@@ -84,7 +84,7 @@ bindings:
    sink:
      kamelet:  custom-jms-amqp-10-sink
      properties:
-      destinationName: group6-prod
+      destinationName: group6-dev
       destinationType: topic
       password: "{{amqp.password}}"
       remoteURI:  "{{amqp.broker-url}}"
@@ -94,7 +94,7 @@ bindings:
 
  - name: rhte-camelk.group1.to.group7
    secret: artemis-credentials-secret
-   sslSecret: my-artemis-secret
+   sslSecret: client-truststore
    source:
     kamelet: timer-source-with-header
     properties:
@@ -103,7 +103,7 @@ bindings:
    sink:
      kamelet:  custom-jms-amqp-10-sink
      properties:
-      destinationName: group7-prod
+      destinationName: group7-dev
       destinationType: topic
       password: "{{amqp.password}}"
       remoteURI:  "{{amqp.broker-url}}"
@@ -112,11 +112,11 @@ bindings:
 
  - name: rhte-camelk.group1.to.log
    secret: artemis-credentials-secret
-   sslSecret: my-artemis-secret  
+   sslSecret: client-truststore  
    source:
      kamelet: custom-jms-amqp-10-source  
      properties:
-      destinationName: group1-prod
+      destinationName: group1-dev
       destinationType: topic
       password: "{{amqp.password}}"
       remoteURI:  "{{amqp.broker-url}}"

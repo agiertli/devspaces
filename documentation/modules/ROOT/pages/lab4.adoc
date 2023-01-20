@@ -31,7 +31,7 @@ default violated when using `kamel run`.
 [.lines_space]
 [source,bash, subs="+macros,+attributes"]
 ----
-kamel reset –namespace (deletes everything)
+kamel reset –namespace userN-dev (deletes everything)
 or
 oc delete ik 
 ----
@@ -44,7 +44,6 @@ in dev namespace:
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-cd lab4
 kamel run MutableIntegration.java --namespace userN-dev
 ----
 
@@ -56,7 +55,8 @@ the name of the container image :
 [source,bash, subs="+macros,+attributes"]
 ----
 oc get it mutable-integration
-oc get ik 
+
+oc get ik <ik name>
 ----
 * Manually deploy the integration into the production namespace and
 repeat the procedure.
@@ -93,15 +93,18 @@ Now let’s see how we can use `kamel promote` to overcome this problem.
 Most of the resources are already provided for you, you just need to
 fill in the blanks.
 
-We have prepared a `Tekton pipeline` for you which: - fetches the gitea
-repo - runs the camel-k integration - promotes it to production by
-utilizing `kamel promote`
+We have prepared a `Tekton pipeline` for you which: 
+* fetches the gitea repo 
+* runs the camel-k integration 
+* promotes it to production by utilizing `kamel promote`
 
 image::tekton.png[Tekton Pipeline,title="Tekton Pipeline"]
 
 `In a real world pipeline there would be some integration and smoke tests as well, but this is beyond the scope of this lab.`
 
-Complete Lab4: - Examine `create-resources.sh` script, change it as needed and run it 
+*Complete Lab4:*
+
+* Examine `create-resources.sh` script, change it as needed and run it 
 [.lines_space]
 [.console-input]
 [source,bash, subs="+macros,+attributes"]

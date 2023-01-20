@@ -23,8 +23,8 @@ execute it
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-cd labs/lab5    
-./utils/cleanup.sh
+cd utils &&
+./cleanup.sh
 ----
 
 * Generate Sealed secrets through a prepared script.
@@ -33,7 +33,7 @@ cd labs/lab5
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-./utils/create-secrets.sh
+./create-secrets.sh
 ----
 
 * _Move_ the generated yaml files to `labs/lab5/secrets/dev` folder.
@@ -79,14 +79,30 @@ oc get secret <NAME OF THE SECRET>
 * Checkout the `dev` branch and edit `lab5/charts/dev/values.yaml` - Add
 as many bindings as needed, and don’t forget to adjust names and
 destinationNames so they match your group name.
+
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+git checkout -b dev
+----
+
 * Git commit and push your changes to the `dev` branch. The ArgoCD
 application is monitoring `dev` branch for changes and will apply them
 to `userN-dev` openshift project`
+
 * Verify your changes by looking for a new pods in `userN-dev`
 namespace.
+
 * When you are happy with the behavior of your integrations in the dev
 namespace, create a new branch based on dev
-`$ git checkout -b feature/my-first-prod-release origin/dev`
+[.lines_space]
+[.console-input]
+[source,bash, subs="+macros,+attributes"]
+----
+git checkout -b feature/my-first-prod-release origin/dev
+----
+
 * Modify `lab5/charts/prod/values.yaml` only. Copy bindings from `dev`
 environment but change destination name and userNamespace to point to
 `prod` namespace.
