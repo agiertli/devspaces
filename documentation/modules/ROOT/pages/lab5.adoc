@@ -78,7 +78,7 @@ oc get secret <NAME OF THE SECRET>
 
 * Checkout the `dev` branch and edit `lab5/charts/dev/values.yaml` - Add
 as many bindings as needed, and don’t forget to adjust names and
-destinationNames so they match your group name.
+destinationNames so they match your user name.
 
 [.lines_space]
 [.console-input]

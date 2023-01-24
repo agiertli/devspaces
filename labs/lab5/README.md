@@ -50,7 +50,7 @@ Once you push the sealed secrets to your git repository, ArgoCD will apply them 
 
 __2. Create Camel-K objects__
 
-- Checkout the `dev` branch and edit `lab5/charts/dev/values.yaml` - Add as many bindings as needed, and don't forget to adjust names and destinationNames so they match your group name. 
+- Checkout the `dev` branch and edit `lab5/charts/dev/values.yaml` - Add as many bindings as needed, and don't forget to adjust names and destinationNames so they match your user name. 
 - Git commit and push your changes to the `dev` branch. The ArgoCD application is monitoring `dev` branch for changes and will apply them to `userN-dev` openshift project`
 -  Verify your changes by looking for a new pods in `userN-dev` namespace.
 -  When you are happy with the behavior of your integrations in the dev namespace, create a new branch based on dev

@@ -31,9 +31,9 @@ spec:
         description: The interval between two events in milliseconds
         title: Period
         type: integer
-      groupName:
+      userName:
         type: string
-        default: group-name-is-missing  
+        default: user-name-is-missing  
     required:
     - message
     title: Timer Source
@@ -56,9 +56,9 @@ spec:
             {{ "{{contentType}}" }}
           name: Content-Type
       - set-header: 
-          name: group-name
+          name: user-name
           constant: >-
-            {{ "{{groupName}}" }}
+            {{ "{{userName}}" }}
       - to: kamelet:sink
       uri: timer:tick
 {{ end }}            

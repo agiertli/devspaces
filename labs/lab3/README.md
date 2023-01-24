@@ -17,14 +17,14 @@ It has another advantage - the fact it's a OpenShift CR means we don't have to d
 In this lab we will:
 - Turn our Java based integration into a Kamelet Binding. 
 - Use `helm` to generate multiple Kamelet Bindings with ease. 
-- Generate N bindings (where N is number of groups-1) to generate messages for every group in this lab. 
-- Add one more binding which will simply read all the messages you as a group received. 
+- Generate N bindings (where N is number of users-1) to generate messages for every user in this lab. 
+- Add one more binding which will simply read all the messages you as a user received. 
 
 <br/>
 
 The output of the helm chart should produce this:
 
-![Helm chart design for Group1](helm-chart-design.svg "Helm Chart design for Group1")
+![Helm chart design for User1](helm-chart-design.svg "Helm Chart design for User1")
 
 `The actual helm templates were already developed for you.`
 
@@ -89,16 +89,16 @@ __2. Helm + Kamel = 💪__
   ```
   $ oc get klb -n userN-dev
   NAME                           PHASE   REPLICAS
-  rhte-camelk.group1.to.group2   Ready   1
-  rhte-camelk.group1.to.group3   Ready   1
-  rhte-camelk.group1.to.group4   Ready   1
-  rhte-camelk.group1.to.group5   Ready   1
-  rhte-camelk.group1.to.group6   Ready   1
-  rhte-camelk.group1.to.group7   Ready   1
-  rhte-camelk.group1.to.log      Ready   1
+  rhte-camelk.user1.to.user2   Ready   1
+  rhte-camelk.user1.to.user3   Ready   1
+  rhte-camelk.user1.to.user4   Ready   1
+  rhte-camelk.user1.to.user5   Ready   1
+  rhte-camelk.user1.to.user6   Ready   1
+  rhte-camelk.user1.to.user7   Ready   1
+  rhte-camelk.user1.to.log      Ready   1
   ```
 
-  The number of "groupN.to.groupM" bindings can differ based on the number of actual groups present in the lab. Don't forget to check the integration logs to make sure there are no errors. You can use `kamel get` and `kamel log`, or plain `oc`. 
+  The number of "userN.to.userM" bindings can differ based on the number of actual users present in the lab. Don't forget to check the integration logs to make sure there are no errors. You can use `kamel get` and `kamel log`, or plain `oc`. 
 
 <br/>
 
