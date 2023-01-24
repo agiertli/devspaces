@@ -26,7 +26,7 @@ spec:
       apiVersion: camel.apache.org/v1alpha1
       name: custom-jms-amqp-10-source
     properties:
-        destinationName: "group1-dev"
+        destinationName: "user1-dev"
         destinationType: "topic"
         password: "{{amqp.password}}"
         remoteURI:  "{{amqp.broker-url}}"

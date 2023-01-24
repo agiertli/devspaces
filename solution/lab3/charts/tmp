@@ -188,9 +188,9 @@ spec:
         description: The interval between two events in milliseconds
         title: Period
         type: integer
-      groupName:
+      userName:
         type: string
-        default: group-name-was-missing  
+        default: user-name-was-missing  
     required:
     - message
     title: Timer Source
@@ -213,9 +213,9 @@ spec:
             {{contentType}}
           name: Content-Type
       - set-header: 
-          name: group-name
+          name: user-name
           constant: >-
-            {{groupName}}
+            {{userName}}
       - to: kamelet:sink
       uri: timer:tick
 ---
@@ -224,7 +224,7 @@ apiVersion: camel.apache.org/v1alpha1
 kind: KameletBinding
 metadata:
   name: >- 
-   rhte-camelk.group1.to.group2
+   rhte-camelk.user1.to.user2
   namespace: user1-prod 
 spec:
   replicas: 1
@@ -253,7 +253,7 @@ spec:
       apiVersion: camel.apache.org/v1alpha1
       name: timer-source-with-header
     properties:
-        groupName: "group1"
+        userName: "user1"
         message: "greetings-from-red-hat-tech-exchange"
   sink:
     ref:
@@ -262,7 +262,7 @@ spec:
       name: custom-jms-amqp-10-sink
     properties:
           
-        destinationName: "group2-prod"
+        destinationName: "user2-prod"
          
           
         destinationType: "topic"
@@ -284,7 +284,7 @@ apiVersion: camel.apache.org/v1alpha1
 kind: KameletBinding
 metadata:
   name: >- 
-   rhte-camelk.group1.to.group3
+   rhte-camelk.user1.to.user3
   namespace: user1-prod 
 spec:
   replicas: 1
@@ -313,7 +313,7 @@ spec:
       apiVersion: camel.apache.org/v1alpha1
       name: timer-source-with-header
     properties:
-        groupName: "group1"
+        userName: "user1"
         message: "greetings-from-red-hat-tech-exchange"
   sink:
     ref:
@@ -322,7 +322,7 @@ spec:
       name: custom-jms-amqp-10-sink
     properties:
           
-        destinationName: "group3-prod"
+        destinationName: "user3-prod"
          
           
         destinationType: "topic"
@@ -344,7 +344,7 @@ apiVersion: camel.apache.org/v1alpha1
 kind: KameletBinding
 metadata:
   name: >- 
-   rhte-camelk.group1.to.group4
+   rhte-camelk.user1.to.user4
   namespace: user1-prod 
 spec:
   replicas: 1
@@ -373,7 +373,7 @@ spec:
       apiVersion: camel.apache.org/v1alpha1
       name: timer-source-with-header
     properties:
-        groupName: "group1"
+        userName: "user1"
         message: "greetings-from-red-hat-tech-exchange"
   sink:
     ref:
@@ -382,7 +382,7 @@ spec:
       name: custom-jms-amqp-10-sink
     properties:
           
-        destinationName: "group4-prod"
+        destinationName: "user4-prod"
          
           
         destinationType: "topic"
@@ -404,7 +404,7 @@ apiVersion: camel.apache.org/v1alpha1
 kind: KameletBinding
 metadata:
   name: >- 
-   rhte-camelk.group1.to.group5
+   rhte-camelk.user1.to.user5
   namespace: user1-prod 
 spec:
   replicas: 1
@@ -433,7 +433,7 @@ spec:
       apiVersion: camel.apache.org/v1alpha1
       name: timer-source-with-header
     properties:
-        groupName: "group1"
+        userName: "user1"
         message: "greetings-from-red-hat-tech-exchange"
   sink:
     ref:
@@ -442,7 +442,7 @@ spec:
       name: custom-jms-amqp-10-sink
     properties:
           
-        destinationName: "group5-prod"
+        destinationName: "user5-prod"
          
           
         destinationType: "topic"
@@ -464,7 +464,7 @@ apiVersion: camel.apache.org/v1alpha1
 kind: KameletBinding
 metadata:
   name: >- 
-   rhte-camelk.group1.to.group6
+   rhte-camelk.user1.to.user6
   namespace: user1-prod 
 spec:
   replicas: 1
@@ -493,7 +493,7 @@ spec:
       apiVersion: camel.apache.org/v1alpha1
       name: timer-source-with-header
     properties:
-        groupName: "group1"
+        userName: "user1"
         message: "greetings-from-red-hat-tech-exchange"
   sink:
     ref:
@@ -502,7 +502,7 @@ spec:
       name: custom-jms-amqp-10-sink
     properties:
           
-        destinationName: "group6-prod"
+        destinationName: "user6-prod"
          
           
         destinationType: "topic"
@@ -524,7 +524,7 @@ apiVersion: camel.apache.org/v1alpha1
 kind: KameletBinding
 metadata:
   name: >- 
-   rhte-camelk.group1.to.group7
+   rhte-camelk.user1.to.user7
   namespace: user1-prod 
 spec:
   replicas: 1
@@ -553,7 +553,7 @@ spec:
       apiVersion: camel.apache.org/v1alpha1
       name: timer-source-with-header
     properties:
-        groupName: "group1"
+        userName: "user1"
         message: "greetings-from-red-hat-tech-exchange"
   sink:
     ref:
@@ -562,7 +562,7 @@ spec:
       name: custom-jms-amqp-10-sink
     properties:
           
-        destinationName: "group7-prod"
+        destinationName: "user7-prod"
          
           
         destinationType: "topic"
@@ -584,7 +584,7 @@ apiVersion: camel.apache.org/v1alpha1
 kind: KameletBinding
 metadata:
   name: >- 
-   rhte-camelk.group1.to.log
+   rhte-camelk.user1.to.log
   namespace: user1-prod 
 spec:
   replicas: 1
@@ -613,7 +613,7 @@ spec:
       apiVersion: camel.apache.org/v1alpha1
       name: custom-jms-amqp-10-source
     properties:
-        destinationName: "group1-prod"
+        destinationName: "user1-prod"
         destinationType: "topic"
         password: "{{secret:artemis-credentials-secret/password}}"
         remoteURI: "{{secret:artemis-credentials-secret/broker-url}}"

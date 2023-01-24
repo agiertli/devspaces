@@ -10,14 +10,14 @@ oc apply -f custom-jms-amqp-sink.yaml -n $PROD
 echo "creating dev artemis configuration in $DEV"
 oc process -f artemis-cm.yaml \
 -p DESTINATION_TYPE=topic \
--p DESTINATION=group1-dev  \
+-p DESTINATION=user1-dev  \
 -p ROUTE_ID=dev \
 | oc apply -f - -n $DEV
 
 echo "creating prod artemis configuration in $PROD"
 oc process -f artemis-cm.yaml \
 -p DESTINATION_TYPE=topic \
--p DESTINATION=group1-prod  \
+-p DESTINATION=user1-prod  \
 -p ROUTE_ID=prod \
 | oc apply -f - -n $PROD
 

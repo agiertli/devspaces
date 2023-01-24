@@ -29,13 +29,13 @@ Integration. This also greatly fits into today’s GitOps ways of working.
 
 In this lab we will: - Turn our Java based integration into a Kamelet
 Binding. - Use `helm` to generate multiple Kamelet Bindings with ease. -
-Generate N bindings (where N is number of groups-1) to generate messages
-for every group in this lab. - Add one more binding which will simply
-read all the messages you as a group received.
+Generate N bindings (where N is number of users-1) to generate messages
+for every user in this lab. - Add one more binding which will simply
+read all the messages you as a user received.
 
 The output of the helm chart should produce this:
 
-image::helm-chart-design.svg[Helm chart design for Group1,title="Helm Chart design for Group1"]
+image::helm-chart-design.svg[Helm chart design for User1,title="Helm Chart design for User1"]
 
 The actual helm templates were already developed for you.
 
