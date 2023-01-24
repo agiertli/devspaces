@@ -14,7 +14,7 @@ bindings:
 #    sink:
 #      kamelet:  name_of_custom_amqp_sink_kamelet
 #      properties:
-#       destinationName: target_user (syntax; usern-dev)
+#       destinationName: target_user (syntax; userN-dev)
 #       destinationType: topic
 #       remoteURI: "{{amqp.broker-url}}"
 #       username:  "{{amqp.username}}"
