@@ -14,6 +14,9 @@ The primary goal of this lab is to enable Red Hat consultants and architects to 
 == Browse modules
 
 [.tile]
+* xref:00-camelk-overview.adoc[camel-k crash course]
+
+[.tile]
 * xref:01-setup.adoc[Environment setup and class orientation]
 
 [.tile]
