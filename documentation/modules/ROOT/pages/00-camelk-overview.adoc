@@ -7,7 +7,7 @@ IMPORTANT: Please note this is not a definitive guide on camel-k. It's merely an
 
 == Architecture
 
-image::camelk.svg[Camel-K High Level Architecture, title="Camel-K High Level Architecture", width=800,height=600]
+image::camelk.svg[alt=Camel-K High Level Architecture,width=800,height=600]
 
 While the diagram above can be somewhat overwhelming, from a developer perspective you are abstracted from vast majority of all these implementation details. They will of course come handy during troubleshooting or when satisfying general developer curiosity.
 
