@@ -24,14 +24,14 @@ The main parts of the camel-k platform are:
 Operator takes care of coordinating all the moving parts. Most importantly it takes care of translating Camel Integration (written mostly in java or yaml dsl by developers) into a running container image which includes Quarkus application with camel routes. It uses number of Customer Resources (CR) to achieve this. Here are some notable ones:
 
  * IntegrationPlatform
- ** Controls the behavior of the operator. Allows to configure maven settings, based image for builds, container registry and many others.
+ ** Controls the behavior of the operator. Allows to configure maven settings, base image for builds, container registry and many others.
  * Integration
- ** Describes the application by listing sources, resources, dependencies and by providing configuration options. This is the CR which gets created whenever you run `kamel run` and it is defacto the openshift native descriptor of an camel integration.
+ ** Describes the application by listing sources, resources, dependencies and by providing configuration options. This is the CR which gets created whenever you run `kamel run` and it is defacto the openshift native descriptor of a camel integration.
  * IntegrationKit
  ** Fundamental side resource which describes a container image created by the camel-k operator as well as the configurations that need to be applied to every integration that is executed on top of it. An IntegrationKit does not include any source code or resource file defined by the Integration from which it has been generated.
- ** Even though completely hidden, this is a crucial CR for developers. Whenever you submit an Integration to the cluster, camel-k operator will analyze  and maintain it's dependencies. If there is an existing IntegrationKit CR which includes the same dependencies it will be automatically reused. This is one of the reason why camel-k offers such a good developer experience in the cloud environment - the hot redeploy feature works almost as good as in a traditional local dev environment. If you are submitting an Integration for the second time, and you are not changing its dependencies, but only source code, an already existing image (described by IntegrationKit) will be reused and the source code will be mounted via ConfigMap to the new pod. This means the subsequent Integration redeployments takes only couple of seconds instead of minutes!
+ ** Even though completely hidden, this is a crucial CR for developers. Whenever you submit an Integration to the cluster, camel-k operator will analyze it  and maintain it's dependencies. If there is an existing IntegrationKit CR which includes the same dependencies it will be automatically reused. This is one of the reason why camel-k offers such a good developer experience in the cloud environment - the hot redeploy feature works almost as good as in a traditional local dev environment. If you are submitting an Integration for the second time, and you are not changing its dependencies, but only source code, an already existing image (described by IntegrationKit) will be reused and the source code will be mounted via ConfigMap to the new pod. This means the subsequent Integration redeployments takes only couple of seconds instead of minutes!
 * Kamelet (*Kamel* route snipp *ets* )
-** Fundamental unit of abstraction describing integration with external system via simplified interface. Kamelets may contain integration logic consisting of multiple complex steps but they are consumed via simplified interface. All the consumer of kamelets see is expected parameters, input and output. The complex integration logic is completely hidden away. 
+** Fundamental unit of abstraction describing integration with external system via simplified interface. Kamelets may contain integration logic consisting of multiple complex steps but they are consumed via simplified interface. All the consumer of kamelets see is expected parameters, inputs and outputs. The complex integration logic is completely hidden away. 
 ** Kamelet does not translate to a running Integration Application on its own. It's only a descriptor. They can be used in KameletBinding, Integration, but (maybe surprisingly) even in "old school" Camel on Spring Boot and Camel Quarkus application.
 ** Kamelet can be of *sink* type which is used for sending data to external systems, or of *source* type which is used for consuming data from external systems.
 
@@ -39,12 +39,12 @@ Operator takes care of coordinating all the moving parts. Most importantly it ta
 ** Resources which allows to use (or bind) Kamelets to various resources(systems), which includes:
  *** KNative destination
  *** Kafka Topic
- *** Explicit URI (i.e. https://mycompany.com/the-service
+ *** Explicit URI (i.e. https://mycompany.com/the-service )
  *** Another Kamelet
 
 == Runtime
 
-The main purpose of the camel-k runtime is to launch a Camel Quarkus java application which contains camel routes configured by the user. It takes care of things like sources loading, properties setting, and many more. While the fact Quarkus is the target runtime platform can be considered as an implementation detail,  it's useful to keep in mind that it allows for configuring certain aspects in the usual Quarkus-like way. For example, to enable debug logging for a specific logging category you could simply do `kamel run Integration.java -p quarkus.log.category."org.apache.kafka".level=DEBUG`
+The main purpose of the camel-k runtime is to launch a Camel Quarkus java application which contains camel routes configured by the user. It takes care of things like sources loading, properties setting, and many more. While the fact Quarkus is the target runtime platform can be considered as an implementation detail,  it's useful to keep in mind that it allows for configuring certain aspects in the usual Quarkus-like way. For example, to enable debug logging for a specific logging category you could simply do `kamel run Integration.java -p quarkus.log.category."org.apache.kafka".level=DEBUG` which is the identical property used in a standard Quarkus app as well.
 
 == Traits
 
