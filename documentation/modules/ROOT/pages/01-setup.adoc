@@ -1,7 +1,11 @@
 = Lab Environment
 include::_attributes.adoc[]
 
-The lab setup is backed by ArgoCD, below is high level overview of how it's setup.
+High level lab overview can be found on the diagram below.
+
+image::camel-k-lab-overview.png[High Level Lab Setup]
+
+Everything in this lab is controlled and managed by ArgoCD, more details in following diagram.
 
 image::argo-overview.png[High level argo overview]
 
