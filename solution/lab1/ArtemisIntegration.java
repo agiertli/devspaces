@@ -13,6 +13,6 @@ public class ArtemisIntegration extends RouteBuilder {
             .setBody()
                 .simple("Hello Camel from ${routeId}")
             .log("${body}")
-            .to("kamelet:jms-amqp-10-sink?destinationType=topic&destinationName=user1-dev&remoteURI=amqp://localhost:5672");
+            .to("kamelet:jms-amqp-10-sink?destinationType=topic&destinationName=user1-dev&remoteURI=amqp://artemis-amqp-service:5672");
     }
 }

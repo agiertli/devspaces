@@ -76,7 +76,7 @@ running with following characteristics:
  - Access to the artemis pod with dev spaces is
 done using `artemis-amqp-service`.
 
-*2. Connect `ArtemisIntegration` to the local Artemis*
+*2. Connect `ArtemisIntegration` to Artemis*
 
 Next step is to alter our `ArtemisIntegration.java` to send generated
 messages to our broker.
