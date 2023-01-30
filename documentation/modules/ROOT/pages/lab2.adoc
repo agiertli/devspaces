@@ -8,8 +8,7 @@ Red Hat ships many kamelets with the camel-k operator out of the box:
 [source,bash,subs="+macros,+attributes"]
 ----
 oc project userN-dev
-
-oc get kamelet | wc -l
+oc get kamelet -n userN-dev| wc -l
       202
 ----
 
@@ -44,8 +43,8 @@ mechanics:
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
+cd labs/lab2
 mkdir basic-auth && cd basic-auth
-
 oc get kamelet jms-amqp-10-sink -o yaml | oc neat > custom-sink-kamelet.yaml
 ----
 
@@ -135,25 +134,25 @@ So we need to get a bit more creative. *Open your custom-jms-amqp-10-sink kamele
 ----
 
 By defining the remoteURI query parameters directly in the Kamelet definition, we will bypass camel property parser which was causing the `trustStorePassword` param to be lost. 
-After you are done:
+Apply your custom kamelet changes again:
 
 [.lines_space]
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-cd ../ssl && oc apply -f custom-sink-kamelet.yaml
+oc apply -f custom-sink-kamelet.yaml
 ----
 
 Next we need to *inject a client truststore* into the integration pod:
 
 * See file `client.ts` in your user git repository. +
-* Create a secret based on the contents of this file.
+* Create a secret based on the contents of this file. The client trustStore can be found in `labs/lab2/ssl/` folder.
 
 [.lines_space]
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-oc create secret generic client-truststore --from-file=client.ts
+oc create secret generic client-truststore --from-file=labs/lab2/ssl/client.ts
 ----
 
 * `kamel` binary allows us to reference a secret and mount it to a

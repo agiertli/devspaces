@@ -55,7 +55,6 @@ the name of the container image :
 [source,bash, subs="+macros,+attributes"]
 ----
 oc get it mutable-integration
-
 oc get ik <ik name>
 ----
 * Manually deploy the integration into the production namespace and
@@ -121,10 +120,8 @@ This will create all the resources necessary for the Integration. Note that we _
 You need to config and mount all the required secrets and config maps.
 +
 Refer to
-https://camel.apache.org/camel-k/1.10.x/configuration/runtime-config.html[Runtime
-Configuration] and
-https://camel.apache.org/camel-k/1.10.x/configuration/runtime-resources.html[Runtime
-Resources] if you need help.
+https://camel.apache.org/camel-k/1.10.x/configuration/runtime-config.html[Runtime Configuration] and
+https://camel.apache.org/camel-k/1.10.x/configuration/runtime-resources.html[Runtime Resources] if you need help.
 ** Fix parameters of `kamel promote task` (line 346-352)
 * Inspect `pipeline-run.yaml` and fix the git repo url at line 28
 * Apply `pipeline.yaml` and `pipeline-run.yaml` onto your OCP cluster.

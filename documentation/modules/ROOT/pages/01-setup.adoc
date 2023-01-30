@@ -16,9 +16,9 @@ Most of the operators and utilities are installed in the `tooling` namespace to 
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-<TODO>
+https://console-openshift-console.apps.cluster-w7vx4.w7vx4.sandbox801.opentlc.com
 ----
- * OpenShift username: `userN` (N = [1..45])
+ * OpenShift username: `userN` (N = [1..35])
  * OpenShift password: `openshift` 
  * User development (and workspace) namespace: `userN-dev` 
  * User production namespace: `userN-prod` 
