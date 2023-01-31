@@ -1,6 +1,6 @@
 ./utils/create-secret.sh
 
-oc create secret generic my-artemis-secret --from-file=client.ts
+oc create secret generic client-truststore --from-file=client.ts
 
 ./utils/install.sh
 
