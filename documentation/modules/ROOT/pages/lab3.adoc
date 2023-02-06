@@ -68,7 +68,7 @@ Let’s create _another_ secret which will contain:
 ** broker username (admin)
 ** broker password (password1!)
 ** broker connection url
-(amqps://rhte-artemis-one-way-ssl-0-svc.tooling.svc.cluster.local:5673)
+(amqps://rhte-artemis-one-way-ssl-0-svc.amq.svc.cluster.local:5673)
 ** truststore password (password1!)
 +
 *You can use `utils/create-secrets.sh` and `utils/artemis-secret.yaml`

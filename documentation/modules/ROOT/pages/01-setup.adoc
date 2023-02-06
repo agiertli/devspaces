@@ -9,14 +9,14 @@ Everything in this lab is controlled and managed by ArgoCD, more details in foll
 
 image::argo-overview.png[High level argo overview]
 
-Most of the operators and utilities are installed in the `tooling` namespace to which every user has read access.  Here comes the list of all the useful information you need to know:
+Operators and utilities are installed in the separate  namespace to which every user has read access.  Here comes the list of all the useful information you need to know:
 
  * OpenShift Console URL: 
  
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-https://console-openshift-console.apps.cluster-rgpqb.rgpqb.sandbox3015.opentlc.com
+<TODO>
 ----
  * OpenShift username: `userN` (N = [1..35])
  * OpenShift password: `openshift` 
@@ -30,21 +30,21 @@ https://console-openshift-console.apps.cluster-rgpqb.rgpqb.sandbox3015.opentlc.c
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-amqp://rhte-artemis-no-ssl-0-svc.tooling.svc.cluster.local:5672
+amqp://rhte-artemis-no-ssl-0-svc.amq.svc.cluster.local:5672
 ----
  * AMQ 7 Broker ssl connection url:
  
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
- amqps://rhte-artemis-one-way-ssl-0-svc.tooling.svc.cluster.local:5673
+ amqps://rhte-artemis-one-way-ssl-0-svc.amq.svc.cluster.local:5673
 ----
  * Dev Spaces URL:
 
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
-oc get route devspaces -n tooling
+oc get route devspaces -n devspaces
 ----
 
  * Gitea URL:
@@ -52,7 +52,7 @@ oc get route devspaces -n tooling
 [.console-input]
 [source,bash, subs="+macros,+attributes"]
 ----
- oc get route rhte-camelk-gitea -n tooling
+ oc get route rhte-camelk-gitea -n gitea
 ----
 
  * ArgoCD URL:

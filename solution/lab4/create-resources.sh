@@ -26,7 +26,7 @@ oc process -f artemis-secret.yaml \
 -p USERNAME=admin \
 -p PASSWORD=password1! \
 -p TRUSTSTORE_PASSWORD=password1! \
--p BROKER_URL=amqps://rhte-artemis-one-way-ssl-0-svc.tooling.svc.cluster.local:5673 \
+-p BROKER_URL=amqps://rhte-artemis-one-way-ssl-0-svc.amq.svc.cluster.local:5673 \
 -p TRUSTSTORE_LOCATION=/etc/ssl/jms-sink/client.ts \
 | oc apply -f - -n $DEV
 echo "Creating artemis credentials secret in $PROD"
@@ -35,7 +35,7 @@ oc process -f artemis-secret.yaml \
 -p USERNAME=admin \
 -p PASSWORD=password1! \
 -p TRUSTSTORE_PASSWORD=password1! \
--p BROKER_URL=amqps://rhte-artemis-one-way-ssl-0-svc.tooling.svc.cluster.local:5673 \
+-p BROKER_URL=amqps://rhte-artemis-one-way-ssl-0-svc.amq.svc.cluster.local:5673 \
 -p TRUSTSTORE_LOCATION=/etc/ssl/jms-sink/client.ts \
 | oc apply -f - -n $PROD
 

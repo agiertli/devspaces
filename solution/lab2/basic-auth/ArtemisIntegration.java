@@ -12,6 +12,6 @@ public class ArtemisIntegration extends RouteBuilder {
             .setBody()
                 .simple("Hello Camel from ${routeId}")
             .log("${body}")
-            .to("kamelet:custom-jms-amqp-10-sink?destinationType=topic&destinationName=user1-dev&remoteURI=amqp://rhte-artemis-no-ssl-0-svc.tooling.svc.cluster.local:5672&username=admin&password=password1!");
+            .to("kamelet:custom-jms-amqp-10-sink?destinationType=topic&destinationName=user1-dev&remoteURI=amqp://rhte-artemis-no-ssl-0-svc.amq.svc.cluster.local:5672&username=admin&password=password1!");
     }
 }
