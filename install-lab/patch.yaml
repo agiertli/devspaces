@@ -1,0 +1,25 @@
+spec:
+  rbac:
+    policy: |
+      g, system:cluster-admins, role:admin
+      g, cluster-admins, role:admin
+      g, user1, role:user1
+      g, user2, role:user2
+      g, user3, role:user3
+      g, user4, role:user4
+      g, user5, role:user5
+      g, user6, role:user6
+      g, user7, role:user7
+      g, user8, role:user8
+      g, user9, role:user9
+      g, user10, role:user10
+      p, role:user1, applications, *, */lab5-user1-*, allow
+      p, role:user2, applications, *, */lab5-user2-*, allow
+      p, role:user3, applications, *, */lab5-user3-*, allow
+      p, role:user4, applications, *, */lab5-user4-*, allow
+      p, role:user5, applications, *, */lab5-user5-*, allow
+      p, role:user6, applications, *, */lab5-user6-*, allow
+      p, role:user7, applications, *, */lab5-user7-*, allow
+      p, role:user8, applications, *, */lab5-user8-*, allow
+      p, role:user9, applications, *, */lab5-user9-*, allow
+      p, role:user10, applications, *, */lab5-user10-*, allow
