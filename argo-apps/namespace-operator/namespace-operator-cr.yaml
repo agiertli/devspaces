@@ -1,0 +1,79 @@
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: NamespaceConfig
+metadata:
+  name: devspaces-user-config
+spec:
+  labelSelector:
+    matchLabels:
+      app.kubernetes.io./component: workspaces-namespace
+  templates:
+  - objectTemplate: |
+      kind: ConfigMap
+      apiVersion: v1
+      metadata:
+        namespace: {{ .Name }} 
+        name: settings-xml
+        annotations:
+          controller.devfile.io/mount-as: subpath
+          controller.devfile.io/mount-path: /home/user/.m2
+        labels:
+          controller.devfile.io/mount-to-devworkspace: 'true'
+          controller.devfile.io/watch-configmap: 'true'
+      data:
+        settings.xml: |
+          <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+            <localRepository />
+            <interactiveMode />
+            <offline />
+            <pluginGroups />
+            <mirrors />
+            <proxies />
+            <profiles>
+                <profile>
+                  <id>redhat</id>
+                  <repositories>
+                      <repository>
+                        <id>rh-ga</id>
+                        <name>Red Hat public maven repo</name>
+                        <url>https://maven.repository.redhat.com/ga/</url>
+                        <releases>
+                            <enabled>true</enabled>
+                            <updatePolicy>never</updatePolicy>
+                        </releases>
+                        <snapshots>
+                            <enabled>false</enabled>
+                        </snapshots>
+                      </repository>
+                      <repository>
+                        <id>jenkins-ga</id>
+                        <name>jenkins repo</name>
+                        <url>https://repo.jenkins-ci.org/releases/</url>
+                        <releases>
+                            <enabled>true</enabled>
+                            <updatePolicy>never</updatePolicy>
+                        </releases>
+                        <snapshots>
+                            <enabled>false</enabled>
+                        </snapshots>
+                      </repository>
+                  </repositories>
+                  <pluginRepositories>
+                      <pluginRepository>
+                        <id>rh-ga</id>
+                        <name>Red Hat public maven repo</name>
+                        <url>https://maven.repository.redhat.com/ga</url>
+                        <releases>
+                            <enabled>true</enabled>
+                            <updatePolicy>never</updatePolicy>
+                        </releases>
+                        <snapshots>
+                            <enabled>false</enabled>
+                        </snapshots>
+                      </pluginRepository>
+                  </pluginRepositories>
+                </profile>
+            </profiles>
+            <activeProfiles>
+                <activeProfile>redhat</activeProfile>
+            </activeProfiles>
+          </settings>
