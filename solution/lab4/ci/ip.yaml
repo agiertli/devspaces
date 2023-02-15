@@ -1,8 +1,0 @@
-apiVersion: camel.apache.org/v1
-kind: IntegrationPlatform
-metadata:
-  labels:
-    app: camel-k
-  name: camel-k
-spec:
-  profile: OpenShift

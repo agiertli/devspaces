@@ -1,1 +1,0 @@
-helm upgrade --install bindings ../charts -f ../charts/dev/values.yaml

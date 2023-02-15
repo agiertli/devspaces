@@ -1,5 +1,0 @@
-### RHTE 2023 Camel K : Deyond Demo
-
-- Lab instructions are published @ https://agiertli.github.io/rhte-camelk-lab-instructions/template-tutorial/index.html
-- Lab files can be found in `labs` folder
-- Solution to the labs can be found in `solution` folder

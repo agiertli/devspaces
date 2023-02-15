@@ -1,2 +1,0 @@
-1) oc create secret generic client-truststore --from-file=client.ts
-2) kamel run --resource secret:client-truststore@/etc/ssl/jms-sink ArtemisIntegration.java
