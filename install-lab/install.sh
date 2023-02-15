@@ -1,9 +1,7 @@
 ARGOCD_NAMESPACE=openshift-gitops
 ARGOCD_TOOLING_NAMESPACE=tooling
 ARGOCD_CR_NAME=openshift-gitops
-ARGOCD_GIT_URL=https://github.com/agiertli/rhte-camelk.git
-ARGOCD_GIT_NAME="rhte-camelk-tooling"
-ARGOCD_PROJECT_NAME="rhte-camelk-tooling"
+ARGOCD_PROJECT_NAME="mw-day-tooling"
 ARGOCD_APP_NAME="${ARGOCD_PROJECT_NAME}-app-of-apps"
 
 while getopts "p:" opt; do
