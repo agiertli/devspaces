@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: rhte-camelk-tooling-app-of-apps
+  name: mw-day-tooling-tooling-app-of-apps
   namespace: openshift-gitops
 spec:
   destination:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
-  project: rhte-camelk-tooling
+  project: mw-day-tooling
   source:
     path: argo-apps/tooling-app-of-apps
-    repoURL: https://github.com/agiertli/rhte-camelk-lab-setup.git
+    repoURL: https://github.com/agiertli/devspaces.git
     targetRevision: HEAD
   syncPolicy:
     automated:

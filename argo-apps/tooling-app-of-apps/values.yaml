@@ -2,38 +2,14 @@ spec:
   destination:
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/agiertli/rhte-camelk-lab-setup.git
+    repoURL: https://github.com/agiertli/devspaces.git
     targetRevision: HEAD
 argo:
   namespace: openshift-gitops
   destination: tooling
-  project: rhte-camelk-tooling       
+  project: mw-day-tooling      
 
 applications:
-   - name: amq7
-     path: amq7
-     destination: amq
-   - name: sealed-secrets
-     path: sealed-secrets/overlays/default
-     destination: sealed-secrets
-   - name: namespaces
-     path: namespaces  
-     destination: tooling
-   - name: gitea
-     path: gitea
-     destination: gitea
-   - name: camelk-community
-     path: camelk-community
-     destination: camelk-instructor
-   - name: tekton
-     path: tekton  
-     destination: tekton
    - name: devspaces-install
      path: devspaces-install
      destination: devspaces
-   - name: devspaces-seed
-     path: devspaces-seed
-     destination: devspaces
-   - name: lab5
-     path: lab5
-     destination: tooling

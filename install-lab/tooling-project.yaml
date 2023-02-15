@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: rhte-camelk-tooling
+  name: mw-day-tooling
   namespace: openshift-gitops
 spec:
   clusterResourceWhitelist:
