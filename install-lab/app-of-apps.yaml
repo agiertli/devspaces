@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mw-day-tooling-tooling-app-of-apps
+  name: mw-day-parent-app
   namespace: openshift-gitops
 spec:
   destination:
