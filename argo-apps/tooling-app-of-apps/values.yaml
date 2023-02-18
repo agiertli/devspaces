@@ -13,6 +13,7 @@ applications:
    - name: devspaces-install
      path: devspaces-install
      destination: devspaces
+     
    - name: namespace-config
      path: namespace-operator
      destination: namespace-config-operator

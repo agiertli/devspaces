@@ -5,7 +5,7 @@ metadata:
 spec:
   labelSelector:
     matchLabels:
-      app.kubernetes.io./component: workspaces-namespace
+      app.kubernetes.io/component: workspaces-namespace
   templates:
   - objectTemplate: |
       kind: ConfigMap
