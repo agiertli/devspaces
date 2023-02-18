@@ -8,6 +8,22 @@ spec:
       app.kubernetes.io/component: workspaces-namespace
   templates:
   - objectTemplate: |
+        apiVersion: v1
+        data:
+          init-java8-truststore.sh: |
+            #!/usr/bin/env bash
+            keytool -importcert -noprompt -file /public-certs/custom-ca-certificates.custom-ca-certificates.pem -trustcacerts -keystore ~/.java/current/lib/security/cacerts -storepass changeit
+        kind: ConfigMap
+        metadata:
+          annotations:
+            controller.devfile.io/mount-as: subpath
+            controller.devfile.io/mount-path: /home/user/
+          labels:
+            controller.devfile.io/mount-to-devworkspace: "true"
+            controller.devfile.io/watch-configmap: "true"
+          name: init-truststore
+          namespace: {{ .Name }}   
+  - objectTemplate: |
       kind: ConfigMap
       apiVersion: v1
       metadata:
