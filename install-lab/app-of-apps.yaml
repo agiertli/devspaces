@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mw-day-parent-app
+  name: devspaces-parent-app
   namespace: openshift-gitops
 spec:
   destination:
