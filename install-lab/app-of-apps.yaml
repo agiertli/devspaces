@@ -7,7 +7,7 @@ spec:
   destination:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
-  project: mw-day-tooling
+  project: devspaces-project
   source:
     path: argo-apps/tooling-app-of-apps
     repoURL: https://github.com/agiertli/devspaces.git
