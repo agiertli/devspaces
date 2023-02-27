@@ -7,7 +7,7 @@ spec:
 argo:
   namespace: openshift-gitops
   destination: tooling
-  project: mw-day-tooling      
+  project: devspaces-project      
 
 applications:
    - name: devspaces-install
