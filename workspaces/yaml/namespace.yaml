@@ -1,0 +1,17 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: devspaces-user-namespace
+objects:    
+ - kind: Namespace
+   apiVersion: v1
+   metadata:
+    name: ${USERNAME}-devspaces
+    labels:
+      app.kubernetes.io/part-of: che.eclipse.org
+      app.kubernetes.io/component: workspaces-namespace
+    annotations:
+      che.eclipse.org/username: ${USERNAME}
+parameters:
+- description: Username
+  name: USERNAME

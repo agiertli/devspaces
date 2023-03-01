@@ -1,0 +1,54 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: DevWorkspaceTemplate
+objects: 
+  - apiVersion: workspace.devfile.io/v1alpha2
+    kind: DevWorkspaceTemplate
+    metadata:
+      annotations:
+        che.eclipse.org/components-update-policy: unmanaged
+        che.eclipse.org/plugin-registry-url: >-
+          https://devspaces.apps.cluster-b6ps8.b6ps8.sandbox2192.opentlc.com/plugin-registry/v3/plugins/che-incubator/che-code/insiders/devfile.yaml
+      name: che-code-workspace-${USERNAME}
+      namespace: ${USERNAME}-devspaces
+      labels:
+        demo: 'scaling'
+    spec:
+      commands:
+        - apply:
+            component: che-code-injector
+          id: init-container-command
+      components:
+        - name: checode
+          volume: {}
+        - container:
+            cpuRequest: 30m
+            command:
+              - /entrypoint-init-container.sh
+            env:
+              - name: CHE_DASHBOARD_URL
+                value: https://devspaces.apps.cluster-b6ps8.b6ps8.sandbox2192.opentlc.com
+              - name: CHE_PLUGIN_REGISTRY_URL
+                value: >-
+                  https://devspaces.apps.cluster-b6ps8.b6ps8.sandbox2192.opentlc.com/plugin-registry/v3
+              - name: CHE_PLUGIN_REGISTRY_INTERNAL_URL
+                value: http://plugin-registry.devspaces.svc:8080/v3
+              - name: OPENVSX_REGISTRY_URL
+                value: https://open-vsx.org
+            memoryRequest: 32Mi
+            sourceMapping: /projects
+            cpuLimit: 500m
+            volumeMounts:
+              - name: checode
+                path: /checode
+            memoryLimit: 128Mi
+            image: >-
+              registry.redhat.io/devspaces/code-rhel8@sha256:96254e48ee143514f9a343ed11c2214131de5e562398a50f7b9d0a8d86f7b064
+          name: che-code-injector
+      events:
+        preStart:
+          - init-container-command
+parameters:
+- description: Username
+  name: USERNAME              

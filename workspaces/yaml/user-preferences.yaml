@@ -1,0 +1,22 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: devworkspace-gitconfig
+objects:  
+  - kind: Secret
+    apiVersion: v1
+    metadata:
+      name: user-preferences
+      namespace: ${USERNAME}-devspaces
+      labels:
+        controller.devfile.io/mount-to-devworkspace: 'true'
+      annotations:
+        controller.devfile.io/mount-as: file
+        controller.devfile.io/mount-path: /config/user/preferences
+    stringData:
+      infrastructureNamespace: ${USERNAME}-devspaces
+      infrastructureNamespaceTemplate: <username>-devspaces
+    type: Opaque
+parameters:
+- description: Username
+  name: USERNAME              

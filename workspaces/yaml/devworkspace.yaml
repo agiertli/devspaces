@@ -1,0 +1,163 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: DevWorkspace
+objects:  
+  - apiVersion: workspace.devfile.io/v1alpha2
+    kind: DevWorkspace
+    metadata:
+      annotations:
+        che.eclipse.org/che-editor: che-incubator/che-code/insiders
+        che.eclipse.org/devfile-source: |
+          scm:
+            repo: 'https://github.com/MazArslan/demo-web.git'
+            fileName: devfile.yaml
+          factory:
+            params: 'url=https://github.com/MazArslan/demo-web'
+      name: web-frontend
+      namespace: ${USERNAME}-devspaces
+      finalizers:
+        - rbac.controller.devfile.io
+      labels:
+        demo: 'scaling'
+    spec:
+      contributions:
+        - kubernetes:
+            name: che-code-workspace-${USERNAME}
+            namespace: ${USERNAME}-devspaces
+          name: che-code-workspace-${USERNAME}
+      routingClass: che
+      started: true
+      template:
+        attributes:
+          controller.devfile.io/devworkspace-config:
+            name: devworkspace-config
+            namespace: devspaces
+          controller.devfile.io/storage-type: per-workspace
+          dw.metadata.annotations:
+            che.eclipse.org/che-editor: che-incubator/che-code/insiders
+            che.eclipse.org/devfile-source: |
+              scm:
+                repo: 'https://github.com/MazArslan/demo-web.git'
+                fileName: devfile.yaml
+              factory:
+                params: 'url=https://github.com/MazArslan/demo-web'
+            che.eclipse.org/last-updated-timestamp: '2023-03-01T16:20:13.465Z'
+        components:
+          - attributes:
+              che-code.eclipse.org/contribute-endpoint/code-redirect-1: 13131
+              che-code.eclipse.org/contribute-memoryLimit: true
+              che-code.eclipse.org/contribute-endpoint/code-redirect-2: 13132
+              che-code.eclipse.org/contribute-cpuRequest: true
+              che-code.eclipse.org/contribute-endpoint/code-redirect-3: 13133
+              che-code.eclipse.org/original-memoryLimit: 1Gi
+              che-code.eclipse.org/contributed-container: tools
+              che-code.eclipse.org/contribute-cpuLimit: true
+              che-code.eclipse.org/contribute-memoryRequest: true
+              che-code.eclipse.org/original-memoryRequest: 512Mi
+              che-code.eclipse.org/contribute-endpoint/che-code: 3100
+              che-code.eclipse.org/contribute-entry-point: true
+              che-code.eclipse.org/original-cpuRequest: 200m
+              che-code.eclipse.org/contribute-volume-mount/checode: /checode
+            container:
+              cpuRequest: 230m
+              command:
+                - /checode/entrypoint-volume.sh
+              env:
+                - name: CHE_DASHBOARD_URL
+                  value: >-
+                    https://devspaces.apps.cluster-b6ps8.b6ps8.sandbox2192.opentlc.com
+                - name: CHE_PLUGIN_REGISTRY_URL
+                  value: >-
+                    https://devspaces.apps.cluster-b6ps8.b6ps8.sandbox2192.opentlc.com/plugin-registry/v3
+                - name: CHE_PLUGIN_REGISTRY_INTERNAL_URL
+                  value: http://plugin-registry.devspaces.svc:8080/v3
+                - name: OPENVSX_REGISTRY_URL
+                  value: https://open-vsx.org
+              memoryRequest: 768Mi
+              sourceMapping: /projects
+              cpuLimit: 500m
+              volumeMounts:
+                - name: m2
+                  path: /home/user/.m2
+                - name: checode
+                  path: /checode
+              memoryLimit: 2Gi
+              image: >-
+                registry.redhat.io/devspaces/udi-rhel8@sha256:ac5aaba0bbf1caa7f23205ab837e3029ff9f605211ebf38bdf4b9f1b8fb1ba83
+              endpoints:
+                - exposure: public
+                  name: web
+                  protocol: tcp
+                  targetPort: 8081
+                - attributes:
+                    contributed-by: che-code.eclipse.org
+                    cookiesAuthEnabled: true
+                    discoverable: false
+                    type: main
+                    urlRewriteSupported: true
+                  exposure: public
+                  name: che-code
+                  path: '?tkn=eclipse-che'
+                  protocol: https
+                  secure: false
+                  targetPort: 3100
+                - attributes:
+                    contributed-by: che-code.eclipse.org
+                    discoverable: false
+                    urlRewriteSupported: false
+                  exposure: public
+                  name: code-redirect-1
+                  protocol: http
+                  targetPort: 13131
+                - attributes:
+                    contributed-by: che-code.eclipse.org
+                    discoverable: false
+                    urlRewriteSupported: false
+                  exposure: public
+                  name: code-redirect-2
+                  protocol: http
+                  targetPort: 13132
+                - attributes:
+                    contributed-by: che-code.eclipse.org
+                    discoverable: false
+                    urlRewriteSupported: false
+                  exposure: public
+                  name: code-redirect-3
+                  protocol: http
+                  targetPort: 13133
+            name: tools
+          - name: m2
+            volume:
+              size: 1G
+          - container:
+              cpuRequest: 100m
+              endpoints:
+                - exposure: none
+                  name: backend
+                  protocol: http
+                  targetPort: 8080
+              env:
+                - name: CHE_DASHBOARD_URL
+                  value: >-
+                    https://devspaces.apps.cluster-b6ps8.b6ps8.sandbox2192.opentlc.com
+                - name: CHE_PLUGIN_REGISTRY_URL
+                  value: >-
+                    https://devspaces.apps.cluster-b6ps8.b6ps8.sandbox2192.opentlc.com/plugin-registry/v3
+                - name: CHE_PLUGIN_REGISTRY_INTERNAL_URL
+                  value: http://plugin-registry.devspaces.svc:8080/v3
+                - name: OPENVSX_REGISTRY_URL
+                  value: https://open-vsx.org
+              image: quay.io/marslan/springboot-backend
+              memoryLimit: 1Gi
+              memoryRequest: 512Mi
+              sourceMapping: /projects
+            name: backend-h2
+        projects:
+          - git:
+              remotes:
+                origin: https://github.com/MazArslan/demo-web.git
+            name: demo-web
+parameters:
+- description: Username
+  name: USERNAME

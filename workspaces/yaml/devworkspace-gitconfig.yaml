@@ -1,0 +1,19 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: devworkspace-gitconfig
+objects:  
+  - kind: ConfigMap
+    apiVersion: v1
+    metadata:
+      name: devworkspace-gitconfig
+      namespace: ${USERNAME}-devspaces
+      labels:
+        app.kubernetes.io/defaultName: git-config-secret
+        app.kubernetes.io/part-of: devworkspace-operator
+        controller.devfile.io/watch-configmap: 'true'
+    data:
+      gitconfig: "[filter \"lfs\"]\n    clean = git-lfs clean -- %f\n    smudge = git-lfs smudge -- %f\n    process = git-lfs filter-process\n    required = true\n\n[credential]\n    helper = store --file /.git-credentials/credentials\n\n[user]\n\tname = ${USERNAME}\n\temail = ${USERNAME}@che"
+parameters:
+- description: Username
+  name: USERNAME              

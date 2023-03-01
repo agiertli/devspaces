@@ -1,0 +1,19 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: oauth-client-auth
+objects:  
+  - kind: OAuthClientAuthorization
+    apiVersion: oauth.openshift.io/v1
+    metadata:
+      name: ${USERNAME}:devspaces-client
+    clientName: devspaces-client
+    userName: ${USERNAME}
+    userUID: ${UUID}
+    scopes:
+      - user:full
+parameters:
+- description: Username
+  name: USERNAME     
+- description: UserID
+  name: UUID         
