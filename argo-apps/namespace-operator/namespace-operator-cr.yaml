@@ -1,6 +1,9 @@
 apiVersion: redhatcop.redhat.io/v1alpha1
 kind: NamespaceConfig
 metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"   
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   name: devspaces-user-config
 spec:
   labelSelector:
