@@ -22,10 +22,8 @@ objects:
         demo: 'scaling'
     spec:
       contributions:
-        - kubernetes:
-            name: che-code-workspace-${USERNAME}
-            namespace: ${USERNAME}-devspaces
-          name: che-code-workspace-${USERNAME}
+        - name: ide
+          uri: "https://devspaces.apps.cluster-b6ps8.b6ps8.sandbox2192.opentlc.com/plugin-registry/v3/plugins/che-incubator/che-code/insiders/devfile.yaml"
       routingClass: che
       started: true
       template:
@@ -90,42 +88,6 @@ objects:
                   name: web
                   protocol: tcp
                   targetPort: 8081
-                - attributes:
-                    contributed-by: che-code.eclipse.org
-                    cookiesAuthEnabled: true
-                    discoverable: false
-                    type: main
-                    urlRewriteSupported: true
-                  exposure: public
-                  name: che-code
-                  path: '?tkn=eclipse-che'
-                  protocol: https
-                  secure: false
-                  targetPort: 3100
-                - attributes:
-                    contributed-by: che-code.eclipse.org
-                    discoverable: false
-                    urlRewriteSupported: false
-                  exposure: public
-                  name: code-redirect-1
-                  protocol: http
-                  targetPort: 13131
-                - attributes:
-                    contributed-by: che-code.eclipse.org
-                    discoverable: false
-                    urlRewriteSupported: false
-                  exposure: public
-                  name: code-redirect-2
-                  protocol: http
-                  targetPort: 13132
-                - attributes:
-                    contributed-by: che-code.eclipse.org
-                    discoverable: false
-                    urlRewriteSupported: false
-                  exposure: public
-                  name: code-redirect-3
-                  protocol: http
-                  targetPort: 13133
             name: tools
           - name: m2
             volume:
