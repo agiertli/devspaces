@@ -9,4 +9,4 @@
 ```
 
 ### Sumamry
-That's about it! The above command install OpenShift GitOps operator which install Dev Spaces + Namespace Config Operator. The whole process takes around 15 mins.
+That's about it! The above command install OpenShift GitOps operator which install Dev Spaces + Namespace Config Operator + Kubernetes Image Puller. The whole process takes around 15 mins.
