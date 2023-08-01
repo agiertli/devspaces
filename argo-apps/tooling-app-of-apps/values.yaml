@@ -10,6 +10,10 @@ argo:
   project: devspaces-project      
 
 applications:
+   - name: argocd-rbac
+     path: rbac
+     destination: openshift-gitops
+
    - name: devspaces-install
      path: devspaces-install
      destination: devspaces

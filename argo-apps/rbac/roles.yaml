@@ -1,0 +1,11 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: openshift-gitops
+  name: custom-argocd-role
+rules:
+- apiGroups: 
+   - redhatcop.redhat.io
+  resources: 
+    - namespaceconfigs
+  verbs: ["*"]
