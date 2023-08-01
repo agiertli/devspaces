@@ -11,7 +11,11 @@ spec:
     matchLabels:
       app.kubernetes.io/component: workspaces-namespace
   templates:
-  - objectTemplate: |
+  - excludedPaths:	
+        - .status	
+        - .spec.replicas	
+        - .metadata  
+    objectTemplate: |
         apiVersion: v1
         data:
           init-java8-truststore.sh: |
@@ -27,7 +31,11 @@ spec:
             controller.devfile.io/watch-configmap: "true"
           name: init-truststore
           namespace: {{ .Name }}   
-  - objectTemplate: |
+  - excludedPaths:	
+        - .metadata	
+        - .status	
+        - .spec.replicas       
+    objectTemplate: |
       kind: ConfigMap
       apiVersion: v1
       metadata:
