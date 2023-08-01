@@ -6,4 +6,5 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   labels:
     kubernetes.io/metadata.name: namespace-config-operator
+    argocd.argoproj.io/managed-by: openshift-gitops
   name: namespace-config-operator

@@ -1,7 +1,7 @@
 ARGOCD_NAMESPACE=openshift-gitops
 ARGOCD_TOOLING_NAMESPACE=tooling
 ARGOCD_CR_NAME=openshift-gitops
-ARGOCD_PROJECT_NAME="mw-day-tooling"
+ARGOCD_PROJECT_NAME="devspaces-project"
 ARGOCD_APP_NAME="${ARGOCD_PROJECT_NAME}-app-of-apps"
 
 while getopts "p:" opt; do
@@ -30,14 +30,14 @@ sleep 5
 done
 oc -n $ARGOCD_NAMESPACE patch secret $ARGOCD_CR_NAME-cluster --patch "{\"stringData\": {\"admin.password\": \"$ARGOCD_ADMIN_PASSWORD\"}}"
 
-echo "Setting ArgoCD permissions"
+# echo "Setting ArgoCD permissions"
 oc new-project ${ARGOCD_TOOLING_NAMESPACE}
-oc policy add-role-to-user \
-   edit \
-   system:serviceaccount:${ARGOCD_CR_NAME}:${ARGOCD_CR_NAME}-argocd-application-controller \
-   --rolebinding-name=argocd-edit \
-   -n ${ARGOCD_TOOLING_NAMESPACE}
-oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller    
+# oc policy add-role-to-user \
+#    edit \
+#    system:serviceaccount:${ARGOCD_CR_NAME}:${ARGOCD_CR_NAME}-argocd-application-controller \
+#    --rolebinding-name=argocd-edit \
+#    -n ${ARGOCD_TOOLING_NAMESPACE}
+# oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:openshift-gitops:openshift-gitops-argocd-application-controller    
 
 echo "Creating ArgoCD Project ${ARGOCD_PROJECT_NAME}"
 
@@ -52,7 +52,7 @@ oc apply -f app-of-apps.yaml -n ${ARGOCD_NAMESPACE}
 # echo "Replacing sealed secret controller keys.."
 # ../argo-apps/sealed-secrets/scripts/replace-sealed-secrets-secret.sh 
 
-oc patch argocds.argoproj.io openshift-gitops --type='merge' --patch-file=patch.yaml -n openshift-gitops
+#oc patch argocds.argoproj.io openshift-gitops --type='merge' --patch-file=patch.yaml -n openshift-gitops
 oc patch configmaps argocd-rbac-cm  -p '{"data":{"policy.default":" "}}' -n openshift-gitops
 
 echo "Installation complete!" 

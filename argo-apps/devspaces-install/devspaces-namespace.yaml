@@ -6,4 +6,5 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
   labels:
     kubernetes.io/metadata.name: devspaces
+    argocd.argoproj.io/managed-by: openshift-gitops
   name: devspaces
