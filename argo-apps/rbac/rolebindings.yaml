@@ -8,6 +8,6 @@ subjects:
   name: openshift-gitops-argocd-application-controller
   namespace: openshift-gitops
 roleRef:
-  kind: Role 
+  kind: ClusterRole 
   name: custom-argocd-role
   apiGroup: rbac.authorization.k8s.io
