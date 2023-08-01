@@ -6,6 +6,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: openshift-gitops-argocd-application-controller
+  namespace: openshift-gitops
 roleRef:
   kind: Role 
   name: custom-argocd-role
