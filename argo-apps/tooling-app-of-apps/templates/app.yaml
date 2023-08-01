@@ -19,6 +19,7 @@ spec:
   syncPolicy:
     syncOptions:
      - SkipDryRunOnMissingResource=true
+     - ServerSideApply=true
     automated:
       selfHeal: true
 {{- end }}

@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: openshift-gitops
+spec:
+  server:
+    route:
+      enabled: true
+      tls:
+        insecureEdgeTerminationPolicy: Redirect
+        termination: reencrypt
+  rbac:    
+        defaultPolicy: 'role:none'
+        policy: |
+          p, role:none, applications, get, */*, deny
+          p, role:none, certificates, get, *, deny
+          p, role:none, clusters, get, *, deny
+          p, role:none, repositories, get, *, deny
+          p, role:none, projects, get, *, deny
+          p, role:none, accounts, get, *, deny
+          p, role:none, gpgkeys, get, *, deny
+          g, system:cluster-admins, role:admin
+          g, cluster-admins, role:admin
+          g, argocdadmins, role:admin
+        scopes: "[accounts,groups]"
