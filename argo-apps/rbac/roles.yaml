@@ -11,3 +11,10 @@ rules:
     - namespaceconfig
   verbs: 
    - '*'
+ - apiGroups:
+   - org.eclipse.che
+   resources:
+    - checlusters
+    - checluster
+   verbs:
+    - '*'      
