@@ -9,6 +9,35 @@ spec:
       tls:
         insecureEdgeTerminationPolicy: Redirect
         termination: reencrypt
+  resourceInclusions: |
+    - apiGroups:
+      - "argoproj.io/v1alpha1"
+      kinds:
+      - application
+      - applications
+      - appproject
+      - appprojects
+      clusters:
+      - "*"      
+    - apiGroups:
+      - "*"
+      kinds:
+      - configmap
+      - configmaps
+      - clusterrolebinding
+      - clusterrolebindings
+      - rolebinding
+      - rolebindings
+      - clusterrole
+      - clusterroles
+      - subscription
+      - subscriptions
+      - namespace
+      - namespaces
+      - operatorgroup
+      - operatorgroups
+      clusters:
+      - "*"        
   rbac:    
         defaultPolicy: 'role:none'
         policy: |
