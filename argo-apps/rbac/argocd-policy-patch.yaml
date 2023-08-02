@@ -25,6 +25,7 @@ spec:
       - Group
       - NamespaceConfig
       - CheCluster
+      - NexusRepo
       clusters:
       - "*"        
   rbac:    
