@@ -5,6 +5,12 @@ metadata:
   name: custom-argocd-role
 rules:
 - apiGroups: 
+   - sonatype.com
+  resources: 
+    - NexusRepo
+  verbs: 
+   - '*'
+- apiGroups: 
    - redhatcop.redhat.io
   resources: 
     - namespaceconfigs
