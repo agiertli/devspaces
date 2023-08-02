@@ -18,15 +18,12 @@ spec:
       - AppProject
       - ConfigMap
       - ClusterRoleBinding
-      - clusterrolebindings
-      - rolebinding
-      - rolebindings
       - ClusterRole
-      - clusterroles
       - Subscription
       - Namespace
       - OperatorGroup
       - Group
+      - NamespaceConfig
       clusters:
       - "*"        
   rbac:    
