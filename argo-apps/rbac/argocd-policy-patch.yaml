@@ -13,7 +13,7 @@ spec:
     - apiGroups:
       - "argoproj.io/v1alpha1"
       kinds:
-      - application
+      - Application
       - applications
       - appproject
       - appprojects
@@ -23,20 +23,16 @@ spec:
     - apiGroups:
       - "*"
       kinds:
-      - configmap
-      - configmaps
+      - ConfigMap
       - ClusterRoleBinding
       - clusterrolebindings
       - rolebinding
       - rolebindings
       - ClusterRole
       - clusterroles
-      - subscription
-      - subscriptions
-      - namespace
-      - namespaces
-      - operatorgroup
-      - operatorgroups
+      - Subscription
+      - Namespace
+      - OperatorGroup
       - Group
       clusters:
       - "*"        
