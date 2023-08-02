@@ -17,6 +17,7 @@ spec:
       - applications
       - appproject
       - appprojects
+      - ArgoCD
       clusters:
       - "*"      
     - apiGroups:
@@ -24,11 +25,11 @@ spec:
       kinds:
       - configmap
       - configmaps
-      - clusterrolebinding
+      - ClusterRoleBinding
       - clusterrolebindings
       - rolebinding
       - rolebindings
-      - clusterrole
+      - ClusterRole
       - clusterroles
       - subscription
       - subscriptions
@@ -36,6 +37,7 @@ spec:
       - namespaces
       - operatorgroup
       - operatorgroups
+      - Group
       clusters:
       - "*"        
   rbac:    
