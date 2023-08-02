@@ -9,20 +9,13 @@ spec:
       tls:
         insecureEdgeTerminationPolicy: Redirect
         termination: reencrypt
-  resourceInclusions: |
-    - apiGroups:
-      - "argoproj.io/v1alpha1"
-      kinds:
-      - Application
-      - applications
-      - appproject
-      - appprojects
-      - ArgoCD
-      clusters:
-      - "*"      
+  resourceInclusions: |   
     - apiGroups:
       - "*"
       kinds:
+      - ArgoCD
+      - Application
+      - AppProject
       - ConfigMap
       - ClusterRoleBinding
       - clusterrolebindings
