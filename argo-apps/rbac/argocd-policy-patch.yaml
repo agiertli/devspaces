@@ -24,6 +24,7 @@ spec:
       - OperatorGroup
       - Group
       - NamespaceConfig
+      - CheCluster
       clusters:
       - "*"        
   rbac:    
