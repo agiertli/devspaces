@@ -5,7 +5,7 @@
 
 ### Usage
 ```bash
-./install-lab/install.sh -p arbitrary-argocd-master-password
+cd install-lab && ./install.sh -p arbitrary-argocd-master-password
 ```
 
 ### Sumamry
