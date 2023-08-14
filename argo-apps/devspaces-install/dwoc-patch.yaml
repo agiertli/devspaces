@@ -1,0 +1,14 @@
+apiVersion: controller.devfile.io/v1alpha1
+config:
+  workspace:
+    ignoredUnrecoverableEvents:
+    - FailedScheduling
+    progressTimeout: 600s
+kind: DevWorkspaceOperatorConfig
+metadata:
+  name: devworkspace-config
+  namespace: devspaces
+  annotations:
+    argocd.argoproj.io/sync-options: ServerSideApply=true  
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "3"      

@@ -24,4 +24,10 @@ rules:
   - checlusters
   - checluster
   verbs:
-  - '*'      
+  - '*'  
+apiGroups:
+  - controller.devfile.io
+  resources:
+  - devworkspaceoperatorconfigs
+  verbs:
+  - '*'          
