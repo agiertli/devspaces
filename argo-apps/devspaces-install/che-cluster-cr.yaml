@@ -35,6 +35,7 @@ spec:
   containerRegistry: {}
   devEnvironments:
     secondsOfRunBeforeIdling: -1
+    startTimeoutSeconds: 1200
     defaultNamespace:
       template: <username>-dev
     secondsOfInactivityBeforeIdling: -1
