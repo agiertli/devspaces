@@ -37,7 +37,7 @@ spec:
     secondsOfRunBeforeIdling: -1
     startTimeoutSeconds: 1200
     nodeSelector:
-      scaling: "true"
+      scale: "true"
     defaultNamespace:
       template: <username>-dev
     secondsOfInactivityBeforeIdling: -1
