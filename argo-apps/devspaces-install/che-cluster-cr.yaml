@@ -18,20 +18,10 @@ spec:
     cheServer:
       debug: false
       logLevel: INFO
-    database:
-      credentialsSecretName: postgres-credentials
-      externalDb: false
-      postgresDb: dbche
-      postgresHostName: postgres
-      postgresPort: '5432'
-      pvc:
-        claimSize: 1Gi
     metrics:
       enable: true
     pluginRegistry:
-      deployment:
-        containers:
-          - image: registry.redhat.io/devspaces/pluginregistry-rhel8@sha256:a95b61b3f5d44d14c1398b0674ad04fd61c07f75afad08e43c3a4d5513340176
+     openVSXURL: "https://open-vsx.org"
   containerRegistry: {}
   devEnvironments:
     secondsOfRunBeforeIdling: -1
