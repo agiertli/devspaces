@@ -1,8 +1,0 @@
-{
-    "security.workspace.trust.startupPrompt": "never",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "/Users/agiertli/Library/Application Support/Code/User/globalStorage/redhat.vscode-camelk/java-dependencies-3.19.0/dependencies/*.jar"
-    ],
-
-}
