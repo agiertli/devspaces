@@ -11,26 +11,26 @@ spec:
       tls:
         insecureEdgeTerminationPolicy: Redirect
         termination: reencrypt
-  resourceInclusions: |   
-    - apiGroups:
-      - "*"
-      kinds:
-      - ArgoCD
-      - Application
-      - AppProject
-      - ConfigMap
-      - ClusterRoleBinding
-      - ClusterRole
-      - DevWorkspaceOperatorConfig
-      - Subscription
-      - Namespace
-      - OperatorGroup
-      - Group
-      - NamespaceConfig
-      - CheCluster
-      - NexusRepo
-      clusters:
-      - "*"        
+  # resourceInclusions: |   
+  #   - apiGroups:
+  #     - "*"
+  #     kinds:
+  #     - ArgoCD
+  #     - Application
+  #     - AppProject
+  #     - ConfigMap
+  #     - ClusterRoleBinding
+  #     - ClusterRole
+  #     - DevWorkspaceOperatorConfig
+  #     - Subscription
+  #     - Namespace
+  #     - OperatorGroup
+  #     - Group
+  #     - NamespaceConfig
+  #     - CheCluster
+  #     - NexusRepo
+  #     clusters:
+  #     - "*"        
   rbac:    
         defaultPolicy: 'role:none'
         policy: |
