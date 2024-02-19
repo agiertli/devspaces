@@ -28,11 +28,6 @@ spec:
             cpu: "1000"
             memory: 200Gi
             pods: "10"
-          scopeSelector:
-            matchExpressions:
-            - operator : In
-              scopeName: PriorityClass
-              values: ["high"]
       - apiVersion: v1
         kind: LimitRange
         metadata:
