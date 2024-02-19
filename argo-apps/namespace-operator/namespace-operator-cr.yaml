@@ -16,6 +16,42 @@ spec:
         - .spec.replicas	
         - .metadata  
     objectTemplate: |
+      apiVersion: v1
+      kind: List
+      items:
+      - apiVersion: v1
+        kind: ResourceQuota
+        metadata:
+          name: dev-spaces-resource-quota
+        spec:
+          hard:
+            cpu: "1000"
+            memory: 200Gi
+            pods: "10"
+          scopeSelector:
+            matchExpressions:
+            - operator : In
+              scopeName: PriorityClass
+              values: ["high"]
+      - apiVersion: v1
+        kind: LimitRange
+        metadata:
+          name: devspaces-pod-limit-range
+        spec:
+          limits:
+            - type: "Pod" 
+              max:
+                cpu: "8"
+                memory: "16Gi"
+              min:
+                cpu: "200m"
+                memory: "6Mi"      
+
+  - excludedPaths:	
+        - .status	
+        - .spec.replicas	
+        - .metadata  
+    objectTemplate: |
         apiVersion: v1
         data:
           init-java8-truststore.sh: |
@@ -44,7 +80,7 @@ spec:
         annotations:
           controller.devfile.io/mount-as: subpath
           controller.devfile.io/mount-path: /home/user/.m2
-        labels:
+        labels: 
           controller.devfile.io/mount-to-devworkspace: 'true'
           controller.devfile.io/watch-configmap: 'true'
       data:
