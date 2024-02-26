@@ -24,6 +24,14 @@ spec:
      openVSXURL: "https://open-vsx.org"
   containerRegistry: {}
   devEnvironments:
+    gatewayContainer:
+      resources:
+        limits:
+          cpu: "4"
+          memory: 5Gi
+        requests:
+          cpu: "1"
+          memory: 1Gi  
     secondsOfRunBeforeIdling: -1
     startTimeoutSeconds: 1200
     defaultNamespace:
